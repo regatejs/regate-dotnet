@@ -42,10 +42,6 @@ namespace Regate
 
         private class TextProps
         {
-            public TextProps()
-            {
-            }
-
             public TextProps(string name)
             {
                 Name = name;
@@ -63,7 +59,7 @@ namespace Regate
 
             public TextProps(string name, TextOptions options) : this(name)
             {
-                this.Placeholder = options.Placeholder;
+                Placeholder = options.Placeholder;
             }
 
             public TextProps(string name, string value, bool isRequired) : this(name, value)
@@ -71,10 +67,10 @@ namespace Regate
                 IsRequired = isRequired;
             }
 
-            public string Name { get; set; }
-            public string Value { get; set; }
-            public string Placeholder { get; set; }
-            public bool IsRequired { get; set; }
+            public string Name { get; }
+            public string Value { get; }
+            public string Placeholder { get; }
+            public bool IsRequired { get; }
         }
     }
 
