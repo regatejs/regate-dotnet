@@ -13,12 +13,13 @@
     <div>@Html.Raw(Regate.Text("username", true))</div>
     <div>@Html.Raw(Regate.Text("username", "mojtaba", true))</div>
     <div>
-        @Html.Raw(Regate.Text(new RegateTextProps
+        @Html.Raw(Regate.Text("username", new Regate.TextOptions()
              {
                  Placeholder = "Username"
              }))
     </div>
-
+    
+    
 
     <button type="submit">SUBMIT</button>
 </form>
