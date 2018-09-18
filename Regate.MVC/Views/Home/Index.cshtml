@@ -8,7 +8,8 @@
 
 <form method="get">
 
-    @Html.Raw(RegateText.Build("username"))
-    
+    <div>@Html.Raw(Regate.Text("username"))</div>
+    <div>@Html.Raw(Regate.Text("username", "mojtaba"))</div>
+
     <button type="submit">SUBMIT</button>
 </form>
