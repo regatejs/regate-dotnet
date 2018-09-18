@@ -17,6 +17,11 @@ namespace Regate
             return _Build(props);
         }
 
+        public static string Text(RegateTextProps props)
+        {
+            return _Build(props);
+        }
+
         private static string _Build(RegateTextProps props)
         {
             var value = WebUtility.HtmlEncode(props.Value);
@@ -34,6 +39,10 @@ namespace Regate
 
     public class RegateTextProps
     {
+        public RegateTextProps()
+        {
+        }
+
         public RegateTextProps(string name)
         {
             Name = name;
