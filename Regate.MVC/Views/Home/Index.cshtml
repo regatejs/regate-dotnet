@@ -1,5 +1,14 @@
-﻿@{
+﻿@using Regate
+@{
     ViewData["Title"] = "Regate";
 }
 
 <h1>Regate</h1>
+
+
+<form method="get">
+
+    @Html.Raw(RegateText.Build("username"))
+    
+    <button type="submit">SUBMIT</button>
+</form>
