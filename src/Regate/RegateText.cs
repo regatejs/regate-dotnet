@@ -11,9 +11,21 @@ namespace Regate
             return _Build(props);
         }
 
+        public static string Text(string name, bool isRequired)
+        {
+            var props = new RegateTextProps(name, isRequired);
+            return _Build(props);
+        }
+
         public static string Text(string name, string value)
         {
             var props = new RegateTextProps(name, value);
+            return _Build(props);
+        }
+
+        public static string Text(string name, string value, bool isRequired)
+        {
+            var props = new RegateTextProps(name, value, isRequired);
             return _Build(props);
         }
 
@@ -48,10 +60,19 @@ namespace Regate
             Name = name;
         }
 
-        public RegateTextProps(string name, string value)
+        public RegateTextProps(string name, string value) : this(name)
         {
-            Name = name;
             Value = value;
+        }
+
+        public RegateTextProps(string name, bool isRequired) : this(name)
+        {
+            IsRequired = isRequired;
+        }
+
+        public RegateTextProps(string name, string value, bool isRequired) : this(name, value)
+        {
+            IsRequired = isRequired;
         }
 
         public string Name { get; set; }
