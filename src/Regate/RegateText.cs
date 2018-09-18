@@ -5,35 +5,22 @@ namespace Regate
 {
     public static partial class Regate
     {
-        public static string Text(string name)
-        {
-            var props = new RegateTextProps(name);
-            return _Build(props);
-        }
+        public static string Text(string name) =>
+            _Build(new RegateTextProps(name));
 
-        public static string Text(string name, bool isRequired)
-        {
-            var props = new RegateTextProps(name, isRequired);
-            return _Build(props);
-        }
+        public static string Text(string name, bool isRequired) =>
+            _Build(new RegateTextProps(name, isRequired));
 
-        public static string Text(string name, string value)
-        {
-            var props = new RegateTextProps(name, value);
-            return _Build(props);
-        }
+        public static string Text(string name, string value) =>
+            _Build(new RegateTextProps(name, value));
 
-        public static string Text(string name, string value, bool isRequired)
-        {
-            var props = new RegateTextProps(name, value, isRequired);
-            return _Build(props);
-        }
+        public static string Text(string name, string value, bool isRequired) =>
+            _Build(new RegateTextProps(name, value, isRequired));
 
-        public static string Text(RegateTextProps props)
-        {
-            return _Build(props);
-        }
+        public static string Text(RegateTextProps props) =>
+            _Build(props);
 
+        
         private static string _Build(RegateTextProps props)
         {
             var value = WebUtility.HtmlEncode(props.Value);
