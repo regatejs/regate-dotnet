@@ -113,6 +113,7 @@ namespace Regate
                     window['RegateFile__setterCallback'] = function (fieldName, fileName) {
                         var _container = document.getElementById(fieldName);
                         var _input = _container.querySelector('[data-role=input]');
+                        var _regate = _container.querySelector('[data-role=RegateFile]');
 
                         _input.value = fileName;
                         _regate.dataset.hasvalue = true;
