@@ -8,6 +8,15 @@ namespace Regate
         public static string Build(string name) =>
             _Build(new Props(name));
 
+        public static string Build(string name, bool isRequired) =>
+            _Build(new Props(name, isRequired));
+
+        public static string Build(string name, string value) =>
+            _Build(new Props(name, value));
+
+        public static string Build(string name, string value, bool isRequired) =>
+            _Build(new Props(name, value, isRequired));
+
         private static string _Build(Props props)
         {
             const string html = @"
@@ -91,7 +100,7 @@ namespace Regate
                     
                     _input.name = name;
 
-                    if (isRequired) {
+                    if (isRequired === true) {
                         _input.required = true;
                     }
 
@@ -123,7 +132,7 @@ namespace Regate
                 }
             ";
 
-            var uniqueId = $"RegateFile__{props.Name}__{Guid.NewGuid().ToString()}";
+            var uniqueId = $"RegateFile__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
 
             return $@"
                 <div id='{uniqueId}'>{html}</div>
@@ -134,8 +143,8 @@ namespace Regate
                     initRegateFile({{
                         uniqueId: '{uniqueId}',
                         name: '{props.Name}',
-                        value: 'myfile.pdf',
-                        isRequired: true,
+                        value: '{props.Value}',
+                        isRequired: {props.IsRequired.ToString().ToLower()},
                         uploaderUrl: '/Uploader/File',
                         repositoryUrl: '/repository/'
                     }});
@@ -151,7 +160,25 @@ namespace Regate
                 Name = name;
             }
 
+            public Props(string name, bool isRequired) : this(name)
+            {
+                IsRequired = isRequired;
+            }
+
+            public Props(string name, string value) : this(name)
+            {
+                Value = value;
+            }
+
+            public Props(string name, string value, bool isRequired) : this(name, value)
+            {
+                Value = value;
+                IsRequired = isRequired;
+            }
+
             public string Name { get; }
+            public string Value { get; }
+            public bool IsRequired { get; }
         }
     }
 
