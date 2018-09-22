@@ -2,14 +2,12 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <title>Regate</title>
     <authors>Mojtaba Dashtinejad</authors>
     <owners>Mojtaba Dashtinejad</owners>
     <licenseUrl>https://github.com/regatejs/regate-dotnet/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/regatejs/regate-dotnet</projectUrl>
-    <repositoryUrl>https://github.com/regatejs/regate-dotnet</repositoryUrl>
-    <repositoryType>git</repositoryType>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Components for building form inputs</description>
     <releaseNotes>Initial Release of RegateText</releaseNotes>
