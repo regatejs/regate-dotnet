@@ -124,7 +124,7 @@ namespace Regate
                         return false;
                     };
 
-                    if (value !== undefined) {
+                    if (value !== undefined && value !== '') {
                         _input.value = value;
                         _regate.dataset.hasvalue = true;
                         _view.href = repositoryUrl + value;
