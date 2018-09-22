@@ -15,112 +15,115 @@
 
                 <div>
                     <!-- [RegateFile] -->
-                    <div id="RegateFile__GUID__ChartFile" data-role="RegateFile">
-                        <div class="input-group">
-                            <div class="input-group-prepend" data-role="uploadContainer">
-                                <button type="button"
-                                        class="btn btn-secondary"
-                                        data-role="upload">
-                                    <i class="fa fa-search mr-1"></i> انتخاب فایل
-                                </button>
+                    <div id="RegateFile__GUID__ChartFile">
+                        <div data-role="RegateFile">
+                            <div class="input-group">
+                                <div class="input-group-prepend" data-role="uploadContainer">
+                                    <button type="button"
+                                            class="btn btn-secondary"
+                                            data-role="upload">
+                                        <i class="fa fa-search mr-1"></i> انتخاب فایل
+                                    </button>
+                                </div>
+
+                                <input type="text"
+                                       name="ChartFile"
+                                       style="pointer-events: none;"
+                                       onfocus="this.blur();"
+                                       data-role="input"
+                                       class="form-control" />
+
+                                <div class="input-group-append" data-role="assetContainer">
+                                    <button type="button" class="btn btn-outline-secondary" data-role="remove">
+                                        <i class="fa fa-fw fa-times"></i>
+                                    </button>
+                                    <a href="#" target="_blank" class="btn btn-outline-secondary" data-role="view">
+                                        <i class="fa fa-fw fa-download"></i>
+                                    </a>
+                                </div>
                             </div>
 
-                            <input type="text"
-                                   name="ChartFile"
-                                   style="pointer-events: none;"
-                                   onfocus="this.blur();"
-                                   data-role="input"
-                                   class="form-control" />
+                            <style>
+                                [data-role="RegateFile"] [data-role="assetContainer"] {
+                                    display: none;
+                                }
 
-                            <div class="input-group-append" data-role="assetContainer">
-                                <button type="button" class="btn btn-outline-secondary" data-role="remove">
-                                    <i class="fa fa-fw fa-times"></i>
-                                </button>
-                                <a href="#" target="_blank" class="btn btn-outline-secondary" data-role="view">
-                                    <i class="fa fa-fw fa-download"></i>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <style>
-                            [data-role="RegateFile"] [data-role="assetContainer"] {
-                                display: none;
-                            }
+                                [data-role="RegateFile"][data-hasvalue] [data-role="assetContainer"] {
+                                    display: flex;
+                                }
 
-                            [data-role="RegateFile"][data-hasvalue] [data-role="assetContainer"] {
-                                display: flex;
-                            }
+                                [data-role="RegateFile"][data-hasvalue] [data-role="uploadContainer"] {
+                                    display: none;
+                                }
+                            </style>
 
-                            [data-role="RegateFile"][data-hasvalue] [data-role="uploadContainer"] {
-                                display: none;
-                            }
-                        </style>
+                            <script>
+                                function initRegateFile({
+                                    name,
+                                    value,
+                                    isRequired,
+                                    uploaderUrl,
+                                    repositoryUrl,
+                                }) {
+                                    var popup = function (url, title, w, h) {
+                                        // Fixes dual-screen position                         Most browsers      Firefox
+                                        var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
+                                        var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
 
-                        <script>
-                            function initRegateFile({
-                                name,
-                                value,
-                                isRequired,
-                                uploaderUrl,
-                                repositoryUrl,
-                            }) {
-                                var popup = function (url, title, w, h) {
-                                    // Fixes dual-screen position                         Most browsers      Firefox
-                                    var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
-                                    var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
+                                        var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+                                        var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
 
-                                    var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
-                                    var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+                                        var left = ((width / 2) - (w / 2)) + dualScreenLeft;
+                                        var top = ((height / 2) - (h / 2)) + dualScreenTop;
+                                        var newWindow = window.open(url, title, 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 
-                                    var left = ((width / 2) - (w / 2)) + dualScreenLeft;
-                                    var top = ((height / 2) - (h / 2)) + dualScreenTop;
-                                    var newWindow = window.open(url, title, 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+                                        // Puts focus on the newWindow
+                                        if (window.focus) {
+                                            newWindow.focus();
+                                        }
 
-                                    // Puts focus on the newWindow
-                                    if (window.focus) {
-                                        newWindow.focus();
+                                        return false;
                                     }
 
-                                    return false;
-                                }
-
-                                var _container = document.getElementById(name);
-                                var _input = _container.querySelector('[data-role=input]');
-                                var _remove = _container.querySelector('[data-role=remove]');
-                                var _view = _container.querySelector('[data-role=view]');
-                                var _upload = _container.querySelector('[data-role=upload]');
-
-                                if (isRequired) {
-                                    _input.required = true;
-                                }
-
-                                _remove.onclick = function () {
-                                    _input.value = '';
-                                    delete _container.dataset.hasvalue;
-                                    return false;
-                                };
-
-                                window['RegateFile__setterCallback'] = function (fieldName, fileName) {
-                                    var _container = document.getElementById(fieldName);
+                                    var _container = document.getElementById(name);
+                                    var _regate = _container.querySelector('[data-role=RegateFile]');
                                     var _input = _container.querySelector('[data-role=input]');
+                                    var _remove = _container.querySelector('[data-role=remove]');
+                                    var _view = _container.querySelector('[data-role=view]');
+                                    var _upload = _container.querySelector('[data-role=upload]');
 
-                                    _input.value = fileName;
-                                    _container.dataset.hasvalue = true;
-                                    _view.href = repositoryUrl + fileName;
-                                };
+                                    if (isRequired) {
+                                        _input.required = true;
+                                    }
 
-                                _upload.onclick = function () {
-                                    popup(uploaderUrl + '?field=' + name, 'RegateFileUploader', 400, 600);
-                                    return false;
-                                };
+                                    _remove.onclick = function () {
+                                        _input.value = '';
+                                        delete _regate.dataset.hasvalue;
+                                        return false;
+                                    };
 
-                                if (value !== undefined) {
-                                    _input.value = value;
-                                    _container.dataset.hasvalue = true;
-                                    _view.href = repositoryUrl + value;
+                                    window['RegateFile__setterCallback'] = function (fieldName, fileName) {
+                                        var _container = document.getElementById(fieldName);
+                                        var _input = _container.querySelector('[data-role=input]');
+
+                                        _input.value = fileName;
+                                        _regate.dataset.hasvalue = true;
+                                        _view.href = repositoryUrl + fileName;
+                                    };
+
+                                    _upload.onclick = function () {
+                                        popup(uploaderUrl + '?field=' + name, 'RegateFileUploader', 400, 600);
+                                        return false;
+                                    };
+
+                                    if (value !== undefined) {
+                                        _input.value = value;
+                                        _regate.dataset.hasvalue = true;
+                                        _view.href = repositoryUrl + value;
+                                    }
                                 }
-                            }
-                        </script>
+                            </script>
+                        </div>
 
                         <script>
                             initRegateFile({
