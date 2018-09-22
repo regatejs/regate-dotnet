@@ -4,6 +4,12 @@
     ViewData["Title"] = "RegateFile";
 }
 
+<div class="alert alert-warning text-right" role="alert" dir="ltr">
+    <div><b>Dependencies:</b></div>
+    <ul style="margin-bottom: 0;">
+        <li>jQuery</li>
+    </ul>
+</div>
 
 <form method="get">
     <div class="content">
@@ -15,16 +21,73 @@
                 <pre class="sample-code sample-code-regate">&#64;Html.Raw(RegateFile.Build("File"))</pre>
 
                 <div>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <button type="button" class="btn btn-primary">
-                                <i class="fa fa-search mr-1"></i> انتخاب
-                            </button>
+                    <!-- [RegateFile] -->
+                    <div id="RegateFile__GUID__ChartFile">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button type="button"
+                                        class="btn btn-primary"
+                                        name="RegateFilePopup"
+                                        data-role="upload"
+                                        onclick='PopupCenter(this.href, this.name, 400, 600); return false;'>
+                                    <i class="fa fa-search mr-1"></i> انتخاب فایل
+                                </button>
+                            </div>
+
+                            <input type="text"
+                                   name="ChartFile"
+                                   readonly="readonly"
+                                   data-role="input"
+                                   class="form-control" />
+
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-outline-primary" data-role="remove">
+                                    <i class="fa fa-fw fa-times"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline-primary" data-role="view">
+                                    <i class="fa fa-fw fa-download"></i>
+                                </button>
+                            </div>
                         </div>
-                        <input type="text"
-                               readonly="readonly"
-                               class="form-control" />
+
+                        <script>
+                            function initRegateFile(field) {
+                                var popup = function (url, title, w, h) {
+                                    // Fixes dual-screen position                         Most browsers      Firefox
+                                    var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
+                                    var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
+
+                                    var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+                                    var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+                                    var left = ((width / 2) - (w / 2)) + dualScreenLeft;
+                                    var top = ((height / 2) - (h / 2)) + dualScreenTop;
+                                    var newWindow = window.open(url, title, 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+
+                                    // Puts focus on the newWindow
+                                    if (window.focus) {
+                                        newWindow.focus();
+                                    }
+
+                                    return false;
+                                }
+
+                                var _container = document.getElementById(field);
+                                var _input = _container.querySelector('[data-role=input]');
+                                var _remove = _container.querySelector('[data-role=remove]');
+                                var _view = _container.querySelector('[data-role=view]');
+                                var _upload = _container.querySelector('[data-role=upload]');
+
+
+                                _upload.onclick = function() {
+                                    alert('salam')
+                                };
+                            }
+                        </script>
+                        
+                        <script>initRegateFile("RegateFile__GUID__ChartFile")</script>
                     </div>
+                    <!-- [/RegateFile] -->
                 </div>
             </div>
             <div class="block-content block-content-full block-content-sm bg-body-light text-right">
