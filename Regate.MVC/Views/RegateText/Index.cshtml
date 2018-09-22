@@ -1,0 +1,24 @@
+﻿@using Regate
+
+@{
+    ViewData["Title"] = "RegateText";
+}
+
+
+
+
+<form method="get">
+
+    <div>@Html.Raw(RegateText.Build("username"))</div>
+    <div>@Html.Raw(RegateText.Build("username", "mojtaba"))</div>
+    <div>@Html.Raw(RegateText.Build("username", true))</div>
+    <div>@Html.Raw(RegateText.Build("username", "mojtaba", true))</div>
+    <div>
+        @Html.Raw(RegateText.Build("username", new RegateText.Options()
+             {
+                 Placeholder = "Username"
+             }))
+    </div>
+    
+    <button type="submit">SUBMIT</button>
+</form>
