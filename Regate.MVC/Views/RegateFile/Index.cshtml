@@ -27,9 +27,7 @@
                             <div class="input-group-prepend">
                                 <button type="button"
                                         class="btn btn-primary"
-                                        name="RegateFilePopup"
-                                        data-role="upload"
-                                        onclick='PopupCenter(this.href, this.name, 400, 600); return false;'>
+                                        data-role="upload">
                                     <i class="fa fa-search mr-1"></i> انتخاب فایل
                                 </button>
                             </div>
@@ -51,7 +49,13 @@
                         </div>
 
                         <script>
-                            function initRegateFile(field) {
+                            function initRegateFile({
+                                name,
+                                value,
+                                isRequired,
+                                uploaderUrl,
+                                repositoryUrl,
+                            }) {
                                 var popup = function (url, title, w, h) {
                                     // Fixes dual-screen position                         Most browsers      Firefox
                                     var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
@@ -72,20 +76,37 @@
                                     return false;
                                 }
 
-                                var _container = document.getElementById(field);
+                                var _container = document.getElementById(name);
                                 var _input = _container.querySelector('[data-role=input]');
                                 var _remove = _container.querySelector('[data-role=remove]');
                                 var _view = _container.querySelector('[data-role=view]');
                                 var _upload = _container.querySelector('[data-role=upload]');
 
-
-                                _upload.onclick = function() {
-                                    alert('salam')
+                                window['RegateFile__setterCallback'] = function (fieldName, fileName) {
+                                    var _container = document.getElementById(fieldName);
+                                    var _input = _container.querySelector('[data-role=input]');
+                                    _input.value = fileName;
                                 };
+
+                                _upload.onclick = function () {
+                                    popup(uploaderUrl + '?field=' + name, 'RegateFileUploader', 400, 600);
+                                    return false;
+                                };
+
+                                if (value !== undefined) {
+                                    _input.value = value;
+                                }
                             }
                         </script>
-                        
-                        <script>initRegateFile("RegateFile__GUID__ChartFile")</script>
+
+                        <script>
+                            initRegateFile({
+                                name: 'RegateFile__GUID__ChartFile',
+                                value: 'salam',
+                                uploaderUrl: '/Uploader/File',
+                                repositoryUrl: '/repository/'
+                            });
+                        </script>
                     </div>
                     <!-- [/RegateFile] -->
                 </div>
