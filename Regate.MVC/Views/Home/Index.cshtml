@@ -8,12 +8,12 @@
 
 <form method="get">
 
-    <div>@Html.Raw(Regate.Text("username"))</div>
-    <div>@Html.Raw(Regate.Text("username", "mojtaba"))</div>
-    <div>@Html.Raw(Regate.Text("username", true))</div>
-    <div>@Html.Raw(Regate.Text("username", "mojtaba", true))</div>
+    <div>@Html.Raw(RegateText.Build("username"))</div>
+    <div>@Html.Raw(RegateText.Build("username", "mojtaba"))</div>
+    <div>@Html.Raw(RegateText.Build("username", true))</div>
+    <div>@Html.Raw(RegateText.Build("username", "mojtaba", true))</div>
     <div>
-        @Html.Raw(Regate.Text("username", new Regate.TextOptions()
+        @Html.Raw(RegateText.Build("username", new RegateText.Options()
              {
                  Placeholder = "Username"
              }))
