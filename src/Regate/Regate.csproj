@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>0.1.0</Version>
+    <PackageProjectUrl>https://github.com/regatejs/regate-dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/regatejs/regate-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseUrl>https://github.com/regatejs/regate-dotnet/blob/master/LICENSE</PackageLicenseUrl>
+    <Authors>Mojtaba Dashtinejad</Authors>
+    <Company>Open Source</Company>
+    <Description>Components For Building Form Inputs</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
 </Project>
