@@ -12,7 +12,11 @@
                 <h3 class="block-title">ساده</h3>
             </div>
             <div class="block-content block-content-full">
-                <div>@Html.Raw(RegateText.Build("Title"))</div>
+                <pre class="sample-code sample-code-regate">&#64;Html.Raw(RegateText.Build("Title"))</pre>
+
+                <div>
+                    @Html.Raw(RegateText.Build("Title"))
+                </div>
             </div>
             <div class="block-content block-content-full block-content-sm bg-body-light text-right">
                 <button type="submit" class="btn btn-sm btn-success">
@@ -30,7 +34,11 @@
                 <h3 class="block-title">مقدار پیش‌فرض</h3>
             </div>
             <div class="block-content block-content-full">
-                <div>@Html.Raw(RegateText.Build("Title", "سلام دنیا"))</div>
+                <pre class="sample-code sample-code-regate">&#64;Html.Raw(RegateText.Build("Title", "سلام دنیا"))</pre>
+
+                <div>
+                    @Html.Raw(RegateText.Build("Title", "سلام دنیا"))
+                </div>
             </div>
             <div class="block-content block-content-full block-content-sm bg-body-light text-right">
                 <button type="submit" class="btn btn-sm btn-success">
@@ -48,7 +56,11 @@
                 <h3 class="block-title">اجباری</h3>
             </div>
             <div class="block-content block-content-full">
-                <div>@Html.Raw(RegateText.Build("Title", true))</div>
+                <pre class="sample-code sample-code-regate">&#64;Html.Raw(RegateText.Build("Title", true))</pre>
+
+                <div>
+                    @Html.Raw(RegateText.Build("Title", true))
+                </div>
             </div>
             <div class="block-content block-content-full block-content-sm bg-body-light text-right">
                 <button type="submit" class="btn btn-sm btn-success">
@@ -66,7 +78,11 @@
                 <h3 class="block-title">اجباری با مقدار پیش‌فرض</h3>
             </div>
             <div class="block-content block-content-full">
-                <div>@Html.Raw(RegateText.Build("Title", "سلام دنیا", true))</div>
+                <pre class="sample-code sample-code-regate">&#64;Html.Raw(RegateText.Build("Title", "سلام دنیا", true))</pre>
+
+                <div>
+                    @Html.Raw(RegateText.Build("Title", "سلام دنیا", true))
+                </div>
             </div>
             <div class="block-content block-content-full block-content-sm bg-body-light text-right">
                 <button type="submit" class="btn btn-sm btn-success">
@@ -84,6 +100,11 @@
                 <h3 class="block-title">Placeholder</h3>
             </div>
             <div class="block-content block-content-full">
+                <pre class="sample-code sample-code-regate">&#64;Html.Raw(RegateText.Build("Title", new RegateText.Options
+                    {
+                        Placeholder = "لطفا عنوان را وارد کنید"
+                    }))</pre>
+
                 <div>
                     @Html.Raw(RegateText.Build("Title", new RegateText.Options
                     {
@@ -107,6 +128,10 @@
                 <h3 class="block-title">Placeholder و مقدار پیش‌فرض</h3>
             </div>
             <div class="block-content block-content-full">
+                <pre class="sample-code sample-code-regate">&#64;Html.Raw(RegateText.Build("Title", "سلام دنیا", new RegateText.Options
+                    {
+                        Placeholder = "لطفا عنوان را وارد کنید"
+                    }))</pre>
                 <div>
                     @Html.Raw(RegateText.Build("Title", "سلام دنیا", new RegateText.Options
                     {
@@ -130,6 +155,11 @@
                 <h3 class="block-title">Placeholder و اجباری</h3>
             </div>
             <div class="block-content block-content-full">
+                <pre class="sample-code sample-code-regate">&#64;Html.Raw(RegateText.Build("Title", true, new RegateText.Options
+                    {
+                        Placeholder = "لطفا عنوان را وارد کنید"
+                    }))</pre>
+
                 <div>
                     @Html.Raw(RegateText.Build("Title", true, new RegateText.Options
                     {
@@ -153,6 +183,11 @@
                 <h3 class="block-title">Placeholder و اجباری با مقدار پیش‌فرض</h3>
             </div>
             <div class="block-content block-content-full">
+                <pre class="sample-code sample-code-regate">&#64;Html.Raw(RegateText.Build("Title", "سلام دنیا", true, new RegateText.Options
+                    {
+                        Placeholder = "لطفا عنوان را وارد کنید"
+                    }))</pre>
+
                 <div>
                     @Html.Raw(RegateText.Build("Title", "سلام دنیا", true, new RegateText.Options
                     {
