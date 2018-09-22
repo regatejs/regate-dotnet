@@ -22,9 +22,9 @@
 
                 <div>
                     <!-- [RegateFile] -->
-                    <div id="RegateFile__GUID__ChartFile">
+                    <div id="RegateFile__GUID__ChartFile" data-role="RegateFile">
                         <div class="input-group">
-                            <div class="input-group-prepend">
+                            <div class="input-group-prepend" data-role="uploadContainer">
                                 <button type="button"
                                         class="btn btn-primary"
                                         data-role="upload">
@@ -38,7 +38,7 @@
                                    data-role="input"
                                    class="form-control" />
 
-                            <div class="input-group-append">
+                            <div class="input-group-append" data-role="assetContainer">
                                 <button type="button" class="btn btn-outline-primary" data-role="remove">
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
@@ -47,6 +47,20 @@
                                 </button>
                             </div>
                         </div>
+                        
+                        <style>
+                            [data-role="RegateFile"] [data-role="assetContainer"] {
+                                display: none;
+                            }
+
+                            [data-role="RegateFile"][data-hasvalue] [data-role="assetContainer"] {
+                                display: flex;
+                            }
+
+                            [data-role="RegateFile"][data-hasvalue] [data-role="uploadContainer"] {
+                                display: none;
+                            }
+                        </style>
 
                         <script>
                             function initRegateFile({
@@ -82,10 +96,18 @@
                                 var _view = _container.querySelector('[data-role=view]');
                                 var _upload = _container.querySelector('[data-role=upload]');
 
+                                _remove.onclick = function () {
+                                    _input.value = '';
+                                    delete _container.dataset.hasvalue;
+                                    return false;
+                                };
+
                                 window['RegateFile__setterCallback'] = function (fieldName, fileName) {
                                     var _container = document.getElementById(fieldName);
                                     var _input = _container.querySelector('[data-role=input]');
-                                    _input.value = fileName;
+
+                                    _input.value = value;
+                                    _container.dataset.hasvalue = true;
                                 };
 
                                 _upload.onclick = function () {
@@ -95,6 +117,7 @@
 
                                 if (value !== undefined) {
                                     _input.value = value;
+                                    _container.dataset.hasvalue = true;
                                 }
                             }
                         </script>
@@ -102,7 +125,7 @@
                         <script>
                             initRegateFile({
                                 name: 'RegateFile__GUID__ChartFile',
-                                value: 'salam',
+                                value: 'myfile.pdf',
                                 uploaderUrl: '/Uploader/File',
                                 repositoryUrl: '/repository/'
                             });
