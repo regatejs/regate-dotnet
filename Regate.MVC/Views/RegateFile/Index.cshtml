@@ -1,0 +1,37 @@
+﻿@using Regate
+
+@{
+    ViewData["Title"] = "RegateFile";
+}
+
+
+<form method="get">
+    <div class="content">
+        <div class="block block-rounded block-bordered">
+            <div class="block-header block-header-default">
+                <h3 class="block-title">ساده</h3>
+            </div>
+            <div class="block-content block-content-full">
+                <pre class="sample-code sample-code-regate">&#64;Html.Raw(RegateFile.Build("File"))</pre>
+
+                <div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-primary">
+                                <i class="fa fa-search mr-1"></i> انتخاب
+                            </button>
+                        </div>
+                        <input type="text"
+                               readonly="readonly"
+                               class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="block-content block-content-full block-content-sm bg-body-light text-right">
+                <button type="submit" class="btn btn-sm btn-success">
+                    ثبت <i class="fa fa-check"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,11 @@
+﻿@{ Layout = null; }
+
+
+<div>@*@ViewBag.FileName*@</div>
+<div>@*@ViewBag.Field*@</div>
+
+
+<script>
+    window.opener['__setFile_@(ViewBag.Field)']('@ViewBag.FileName');
+    window.close();
+</script>
