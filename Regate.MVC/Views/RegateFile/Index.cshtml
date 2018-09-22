@@ -4,13 +4,6 @@
     ViewData["Title"] = "RegateFile";
 }
 
-<div class="alert alert-warning text-right" role="alert" dir="ltr">
-    <div><b>Dependencies:</b></div>
-    <ul style="margin-bottom: 0;">
-        <li>jQuery</li>
-    </ul>
-</div>
-
 <form method="get">
     <div class="content">
         <div class="block block-rounded block-bordered">
@@ -34,7 +27,8 @@
 
                             <input type="text"
                                    name="ChartFile"
-                                   readonly="readonly"
+                                   style="pointer-events: none;"
+                                   onfocus="this.blur();"
                                    data-role="input"
                                    class="form-control" />
 
@@ -42,9 +36,9 @@
                                 <button type="button" class="btn btn-outline-primary" data-role="remove">
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
-                                <button type="button" class="btn btn-outline-primary" data-role="view">
+                                <a href="#" target="_blank" class="btn btn-outline-primary" data-role="view">
                                     <i class="fa fa-fw fa-download"></i>
-                                </button>
+                                </a>
                             </div>
                         </div>
                         
@@ -96,6 +90,10 @@
                                 var _view = _container.querySelector('[data-role=view]');
                                 var _upload = _container.querySelector('[data-role=upload]');
 
+                                if (isRequired) {
+                                    _input.required = true;
+                                }
+
                                 _remove.onclick = function () {
                                     _input.value = '';
                                     delete _container.dataset.hasvalue;
@@ -106,8 +104,9 @@
                                     var _container = document.getElementById(fieldName);
                                     var _input = _container.querySelector('[data-role=input]');
 
-                                    _input.value = value;
+                                    _input.value = fileName;
                                     _container.dataset.hasvalue = true;
+                                    _view.href = repositoryUrl + fileName;
                                 };
 
                                 _upload.onclick = function () {
@@ -118,6 +117,7 @@
                                 if (value !== undefined) {
                                     _input.value = value;
                                     _container.dataset.hasvalue = true;
+                                    _view.href = repositoryUrl + value;
                                 }
                             }
                         </script>
@@ -126,6 +126,7 @@
                             initRegateFile({
                                 name: 'RegateFile__GUID__ChartFile',
                                 value: 'myfile.pdf',
+                                isRequired: true,
                                 uploaderUrl: '/Uploader/File',
                                 repositoryUrl: '/repository/'
                             });
