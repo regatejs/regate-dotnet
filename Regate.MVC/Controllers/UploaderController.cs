@@ -8,17 +8,35 @@ namespace Regate.MVC.Controllers
     {
         public ActionResult File(string field = "")
         {
-            ViewBag.Field = field;
-            return View();
+            var markup = $@"
+                <div dir='rtl'>
+                    <form enctype='multipart/form-data' method='post' action=''>
+
+                        <input type='hidden' name='field' value='{field}' />
+                        <input type='file' name='file' required='required' id='fileUpload' />
+                        <br />
+                        <button type='submit' id='submitButton' class='btn btn-success'>آپلود فایل</button>
+
+                    </form>
+                </div>
+            ";
+
+            return new ContentResult { Content = markup, ContentType = "text/html; charset=utf-8" };
         }
 
         [HttpPost]
-        public ActionResult UploadFile(string field, IFormFile file)
+        public ActionResult File(string field, IFormFile file)
         {
-            ViewBag.Field = field;
-            ViewBag.FileName = "uploaded-file-name.pdf";
+            var fileName = "uploaded-file-name.pdf";
 
-            return View();
+            var markup = $@"
+                <script>
+                    window.opener['RegateFile__setterCallback']('{field}', '{fileName}');
+                    window.close();
+                </script>
+            ";
+
+            return new ContentResult { Content = markup, ContentType = "text/html; charset=utf-8" };
         }
     }
 }
