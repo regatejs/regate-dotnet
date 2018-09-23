@@ -114,6 +114,7 @@ namespace Regate
                         var _container = document.getElementById(fieldName);
                         var _input = _container.querySelector('[data-role=input]');
                         var _regate = _container.querySelector('[data-role=RegateFile]');
+                        var _view = _container.querySelector('[data-role=view]');
 
                         _input.value = fileName;
                         _regate.dataset.hasvalue = true;
