@@ -29,87 +29,80 @@ namespace Regate
         public static string Build(string name, string value, bool isRequired, Options options) =>
             _Build(new Props(name, value, isRequired, options));
 
-        private static string _GetHtml()
-        {
-            return @"
-<input
-  data-role='input'
-  type='text'
-  class='form-control'
-/>
-            ";
-        }
-
         private static string _GetJs()
         {
             return @"
-window.Regate = window.Regate || {}
-Regate.Text = Regate.Text || {}
+var _typeof = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype ? 'symbol' : typeof obj; };
 
-Regate.Text.init = function ({
-  uniqueId,
-  name,
-  value,
-  isRequired,
-  placeholder,
-  onInitialized,
-  onChange,
-}) {
-  var _container = document.getElementById(uniqueId)
-  var _input = _container.querySelector('[data-role=input]')
-  
-  _input.name = name
+var RegateText = {};
 
-  if (isRequired === true)
-    _input.required = true
+RegateText.init = function (_ref) {
+  var id = _ref.id,
+      name = _ref.name,
+      value = _ref.value,
+      isRequired = _ref.isRequired,
+      placeholder = _ref.placeholder,
+      onInitialized = _ref.onInitialized,
+      onChange = _ref.onChange;
 
-  if (value !== undefined)
-    _input.value = value
 
-  if (placeholder !== undefined)
-    _input.placeholder = placeholder
+  if (id === undefined) throw new Error('id is required');
 
-  if (typeof onInitialized === typeof Function) {
-    const isValid = isRequired
-      ? value !== undefined && value.length > 0
-      : true
+  var _container = document.getElementById(id);
+  _container.insertAdjacentHTML('afterend', RegateText.markup(id));
+  _container.parentNode.removeChild(_container);
 
-      onInitialized({value, isValid})
+  var _input = document.getElementById(id + '__input');
+
+  _input.name = name;
+
+  if (isRequired === true) _input.required = true;
+
+  if (value !== undefined) _input.value = value;
+
+  if (placeholder !== undefined) _input.placeholder = placeholder;
+
+  if ((typeof onInitialized === 'undefined' ? 'undefined' : _typeof(onInitialized)) === (typeof Function === 'undefined' ? 'undefined' : _typeof(Function))) {
+    var isValid = isRequired ? value !== undefined && value.length > 0 : true;
+
+    onInitialized({ value: value, isValid: isValid });
   }
 
-  if (typeof onChange === typeof Function) {
-      _input.oninput = () => {
-        const value = _input.value
+  if ((typeof onChange === 'undefined' ? 'undefined' : _typeof(onChange)) === (typeof Function === 'undefined' ? 'undefined' : _typeof(Function))) {
+    _input.oninput = function () {
+      var value = _input.value;
 
-        const isValid = isRequired
-          ? value !== undefined && value.length > 0
-          : true
+      var isValid = isRequired ? value !== undefined && value.length > 0 : true;
 
-        onChange({value, isValid})
-      }
+      onChange({ value: value, isValid: isValid });
+    };
   }
-}
+};
+
+RegateText.markup = function (id) {
+  return '\n  <input\n    id=\'' + id + '__input\'\n    type=\'text\'\n    class=\'form-control\'\n  />\n';
+};
+
             ";
         }
 
         private static string _Build(Props props)
         {
-            var html = _GetHtml();
-            var js = _GetJs();
-
             var uniqueId = $"RegateText__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
 
             var value = WebUtility.HtmlEncode(props.Value);
+            var placeholder = WebUtility.HtmlEncode(props.Placeholder);
 
             return $@"
-                <span id='{uniqueId}'>{html}</span>
-                <script>{js}</script>
+                <script>{_GetJs()}</script>
+                <template id='{uniqueId}'></template>
 
                 <script>
-                    Regate.Text.init({{
-                        uniqueId: '{uniqueId}',
+                    RegateText.init({{
+                        id: '{uniqueId}',
                         name: '{props.Name}',
                         value: '{value}',
+                        placeholder: '{placeholder}',
                         isRequired: {props.IsRequired.ToString().ToLower()},
                     }});
                 </script>
