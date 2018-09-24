@@ -29,18 +29,91 @@ namespace Regate
         public static string Build(string name, string value, bool isRequired, Options options) =>
             _Build(new Props(name, value, isRequired, options));
 
+        private static string _GetHtml()
+        {
+            return @"
+<input
+  data-role='input'
+  type='text'
+  class='form-control'
+/>
+            ";
+        }
+
+        private static string _GetJs()
+        {
+            return @"
+window.Regate = window.Regate || {}
+Regate.Text = Regate.Text || {}
+
+Regate.Text.init = function ({
+  uniqueId,
+  name,
+  value,
+  isRequired,
+  placeholder,
+  onInitialized,
+  onChange,
+}) {
+  var _container = document.getElementById(uniqueId)
+  var _input = _container.querySelector('[data-role=input]')
+  
+  _input.name = name
+
+  if (isRequired === true)
+    _input.required = true
+
+  if (value !== undefined)
+    _input.value = value
+
+  if (placeholder !== undefined)
+    _input.placeholder = placeholder
+
+  if (typeof onInitialized === typeof Function) {
+    const isValid = isRequired
+      ? value !== undefined && value.length > 0
+      : true
+
+      onInitialized({value, isValid})
+  }
+
+  if (typeof onChange === typeof Function) {
+      _input.oninput = () => {
+        const value = _input.value
+
+        const isValid = isRequired
+          ? value !== undefined && value.length > 0
+          : true
+
+        onChange({value, isValid})
+      }
+  }
+}
+            ";
+        }
+
         private static string _Build(Props props)
         {
+            var html = _GetHtml();
+            var js = _GetJs();
+
+            var uniqueId = $"RegateText__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
+
             var value = WebUtility.HtmlEncode(props.Value);
 
-            return $@"<input
-                type='text'
-                name='{props.Name}'
-                class='form-control'
-                placeholder='{props.Placeholder}'
-                value='{value}'
-                {(props.IsRequired ? " required='required' " : "")}
-            />";
+            return $@"
+                <span id='{uniqueId}'>{html}</span>
+                <script>{js}</script>
+
+                <script>
+                    Regate.Text.init({{
+                        uniqueId: '{uniqueId}',
+                        name: '{props.Name}',
+                        value: '{value}',
+                        isRequired: {props.IsRequired.ToString().ToLower()},
+                    }});
+                </script>
+            ";
         }
 
         public class Options
