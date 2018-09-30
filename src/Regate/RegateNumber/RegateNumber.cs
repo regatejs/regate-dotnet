@@ -11,22 +11,22 @@ namespace Regate
         public static string Build(string name, bool isRequired) =>
             _Build(new Props(name, isRequired));
 
-        public static string Build(string name, int value) =>
+        public static string Build(string name, int? value) =>
             _Build(new Props(name, value));
 
-        public static string Build(string name, float value) =>
+        public static string Build(string name, float? value) =>
             _Build(new Props(name, value));
 
-        public static string Build(string name, decimal value) =>
+        public static string Build(string name, decimal? value) =>
             _Build(new Props(name, value));
 
-        public static string Build(string name, int value, bool isRequired) =>
+        public static string Build(string name, int? value, bool isRequired) =>
             _Build(new Props(name, value, isRequired));
 
-        public static string Build(string name, float value, bool isRequired) =>
+        public static string Build(string name, float? value, bool isRequired) =>
             _Build(new Props(name, value, isRequired));
 
-        public static string Build(string name, decimal value, bool isRequired) =>
+        public static string Build(string name, decimal? value, bool isRequired) =>
             _Build(new Props(name, value, isRequired));
 
     }
