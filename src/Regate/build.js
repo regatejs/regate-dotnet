@@ -19,7 +19,7 @@ components.forEach(component => {
 
   code = code.replace(/\"/g, "'")
   code = code.replace('exports.default = ', `window.Regate.${component} = `)
-  code = code.replace("Object.defineProperty(exports, '__esModule', ", 'const smile = function() {}; smile(')
+  code = code.replace("Object.defineProperty(exports, '__esModule', ", 'var smile = function() {}; smile(')
   code = code.replace("'use strict';", '')
 
   code = `;(function () {
