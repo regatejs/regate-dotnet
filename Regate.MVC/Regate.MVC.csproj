@@ -14,9 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\RegateFile\Index.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
     <Content Update="Views\RegateText\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

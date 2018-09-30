@@ -14,7 +14,7 @@ using System.Net;
 
 namespace Regate
 {
-    public static partial class RegateText
+    public static partial class RegateDropdown
     {
         public static string Init()
         {
@@ -36,19 +36,19 @@ Object.defineProperty(exports, '__esModule', {
 
 var _typeof = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype ? 'symbol' : typeof obj; };
 
-var RegateText = {};
+var RegateDropdown = {};
 
-RegateText.init = function (_ref) {
+RegateDropdown.init = function (_ref) {
   var id = _ref.id,
       name = _ref.name,
       _ref$value = _ref.value,
       value = _ref$value === undefined ? '' : _ref$value,
       _ref$isRequired = _ref.isRequired,
       isRequired = _ref$isRequired === undefined ? false : _ref$isRequired,
-      _ref$placeholder = _ref.placeholder,
-      placeholder = _ref$placeholder === undefined ? '' : _ref$placeholder,
-      onInitialized = _ref.onInitialized,
-      onChange = _ref.onChange;
+      _ref$isSelect = _ref.isSelect2,
+      isSelect2 = _ref$isSelect === undefined ? false : _ref$isSelect,
+      _ref$options = _ref.options,
+      options = _ref$options === undefined ? [] : _ref$options;
 
 
   if (id === undefined) throw new Error('id is required');
@@ -59,35 +59,38 @@ RegateText.init = function (_ref) {
 
   _input.name = name;
 
+  var _option = document.createElement('option');
+  _option.value = '';
+  _option.text = '';
+  _option.hidden = true;
+  _input.appendChild(_option);
+
+  options.forEach(function (option) {
+    var _option = document.createElement('option');
+    _option.value = option.key;
+    _option.text = option.value;
+
+    _input.appendChild(_option);
+  });
+
+  _input.value = value;
+
   if (isRequired === true) _input.required = true;
 
-  if (value !== undefined) _input.value = value;
+  if (isSelect2 === true) {
+    if ((typeof jQuery === 'undefined' ? 'undefined' : _typeof(jQuery)) === (typeof undefined === 'undefined' ? 'undefined' : _typeof(undefined))) throw new Error('select2 need jQuery');
 
-  if (placeholder !== undefined) _input.placeholder = placeholder;
+    if (_typeof(jQuery.fn.select2) === (typeof undefined === 'undefined' ? 'undefined' : _typeof(undefined))) throw new Error('select2 is not loaded in the page');
 
-  if ((typeof onInitialized === 'undefined' ? 'undefined' : _typeof(onInitialized)) === (typeof Function === 'undefined' ? 'undefined' : _typeof(Function))) {
-    var isValid = isRequired ? value.length > 0 : true;
-
-    onInitialized({ value: value, isValid: isValid });
-  }
-
-  if ((typeof onChange === 'undefined' ? 'undefined' : _typeof(onChange)) === (typeof Function === 'undefined' ? 'undefined' : _typeof(Function))) {
-    _input.oninput = function () {
-      var value = _input.value;
-
-      var isValid = isRequired ? value.length > 0 : true;
-
-      onChange({ value: value, isValid: isValid });
-    };
+    $(_input).select2();
   }
 };
 
-RegateText.markup = function (id) {
-  return '\n  <input\n    id=\'' + id + '__input\'\n    type=\'text\'\n    class=\'form-control\'\n  />\n';
+RegateDropdown.markup = function (id) {
+  return '\n  <select\n    id=\'' + id + '__input\'\n    class=\'form-control\'\n  ></select>\n';
 };
-
-// exports.default = RegateText;
-    window.Regate.RegateText = RegateText;
+// exports.default = RegateDropdown;
+    window.Regate.RegateDropdown = RegateDropdown;
   }());";
         }
     }
