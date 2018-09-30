@@ -14,6 +14,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\RegateTextarea\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RegateTextarea\_Basic.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RegateTextarea\_IsRequired.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RegateTextarea\_Value.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\RegateText\_IsRequired.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
