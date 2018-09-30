@@ -16,15 +16,15 @@ const components = [
 components.forEach(component => {
   console.log(component)
   var code = fs.readFileSync(`./dist/${component}.js`, 'utf8')
-  code = '/*\n' + code
-  code  = code.replace('var _typeof', '*/\n\nvar _typeof')
+
   code = code.replace(/\"/g, "'")
-  code = code.replace('exports.default = ', '// exports.default = ')
+  code = code.replace('exports.default = ', `window.Regate.${component} = `)
+  code = code.replace("Object.defineProperty(exports, '__esModule', ", 'const smile = function() {}; smile(')
+  code = code.replace("'use strict';", '')
 
   code = `;(function () {
-    window.Regate = window.Regate || {}
+    window.Regate = window.Regate || {};
     ${code}
-    window.Regate.${component} = ${component};
   }());`
   
   if (! fs.existsSync(`./${component}`)) { fs.mkdirSync(`./${component}`); }

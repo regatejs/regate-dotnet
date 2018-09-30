@@ -10,10 +10,10 @@ namespace Regate
             var uniqueId = $"RegateNumber__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
 
             return $@"
-                <script>document.write(Regate.RegateTextarea.markup('{uniqueId}'))</script>
+                <script>document.write(Regate.RegateNumber.markup('{uniqueId}'))</script>
 
                 <script>
-                    Regate.RegateTextarea.init({{
+                    Regate.RegateNumber.init({{
                         id: '{uniqueId}',
                         name: '{props.Name}',
                         value: '{props.Value}',
