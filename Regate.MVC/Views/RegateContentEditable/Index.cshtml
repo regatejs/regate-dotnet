@@ -1,0 +1,10 @@
+﻿@using Regate
+
+@{
+    ViewData["Title"] = "RegateContentEditable";
+}
+
+@Html.Raw(RegateContentEditable.Init())
+
+@await Html.PartialAsync("_Basic")
+@await Html.PartialAsync("_Value")
