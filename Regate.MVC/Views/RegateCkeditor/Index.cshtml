@@ -1,0 +1,11 @@
+﻿@using Regate
+
+@{
+    ViewData["Title"] = "RegateCkeditor";
+}
+
+<script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+@Html.Raw(RegateCkeditor.Init())
+
+@await Html.PartialAsync("_Basic")
+@await Html.PartialAsync("_Value")

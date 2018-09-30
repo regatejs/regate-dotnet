@@ -10,7 +10,6 @@ namespace Regate
             var uniqueId = $"RegateCkeditor__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
 
             var value = WebUtility.HtmlEncode(props.Value);
-            var placeholder = WebUtility.HtmlEncode(props.Placeholder);
 
             return $@"
                 <script>document.write(Regate.RegateCkeditor.markup('{uniqueId}'))</script>
