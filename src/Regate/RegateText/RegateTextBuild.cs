@@ -13,11 +13,10 @@ namespace Regate
             var placeholder = WebUtility.HtmlEncode(props.Placeholder);
 
             return $@"
-                <script>{_GetJs()}</script>
-                <template id='{uniqueId}'></template>
+                <script>document.write(Regate.RegateText.markup('{uniqueId}'))</script>
 
                 <script>
-                    RegateText.init({{
+                    Regate.RegateText.init({{
                         id: '{uniqueId}',
                         name: '{props.Name}',
                         value: '{value}',

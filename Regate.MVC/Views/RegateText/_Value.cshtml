@@ -1,0 +1,23 @@
+﻿<div class="content">
+    <h2>Value</h2>
+
+    <div class="regate-example-container">
+        <div class="regate-example">
+            <form method="get">
+                <div>
+                    <div class="input-group">
+                        @Html.Raw(RegateText.Build("Title", "Hello World"))
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+        <div class="regate-code"><pre><code class="javascript">&#64;Html.Raw(RegateText.Build("Title", "HelloWorld"))</code></pre></div>
+        <div class="regate-serialize bg-gray-dark text-gray-lighter"></div>
+    </div>
+</div>
