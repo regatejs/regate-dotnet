@@ -1,29 +1,10 @@
-using System;
-using System.Net;
-
-namespace Regate
-{
-    public static partial class RegateText
-    {
-        public static string Init()
-        {
-            return $"<script>{_GetJs()}</script>";
-        }
-
-        private static string _GetJs()
-        {
-            return @";(function () {
-    window.Regate = window.Regate || {}
-    /*
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-*/
-
-var _typeof = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype ? 'symbol' : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var RegateText = {};
 
@@ -75,10 +56,4 @@ RegateText.markup = function (id) {
   return '\n  <input\n    id=\'' + id + '__input\'\n    type=\'text\'\n    class=\'form-control\'\n  />\n';
 };
 
-// exports.default = RegateText;
-    window.Regate.RegateText = RegateText;
-  }());";
-        }
-    }
-}
-  
+exports.default = RegateText;

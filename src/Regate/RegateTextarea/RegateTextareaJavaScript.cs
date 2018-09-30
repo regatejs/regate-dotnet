@@ -3,7 +3,7 @@ using System.Net;
 
 namespace Regate
 {
-    public static partial class RegateText
+    public static partial class RegateTextarea
     {
         public static string Init()
         {
@@ -25,9 +25,9 @@ Object.defineProperty(exports, '__esModule', {
 
 var _typeof = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype ? 'symbol' : typeof obj; };
 
-var RegateText = {};
+var RegateTextarea = {};
 
-RegateText.init = function (_ref) {
+RegateTextarea.init = function (_ref) {
   var id = _ref.id,
       name = _ref.name,
       _ref$value = _ref.value,
@@ -36,6 +36,8 @@ RegateText.init = function (_ref) {
       isRequired = _ref$isRequired === undefined ? false : _ref$isRequired,
       _ref$placeholder = _ref.placeholder,
       placeholder = _ref$placeholder === undefined ? '' : _ref$placeholder,
+      _ref$size = _ref.size,
+      size = _ref$size === undefined ? RegateTextarea.Size.Medium : _ref$size,
       onInitialized = _ref.onInitialized,
       onChange = _ref.onChange;
 
@@ -69,14 +71,22 @@ RegateText.init = function (_ref) {
       onChange({ value: value, isValid: isValid });
     };
   }
+
+  _input.style.height = size + 'px';
 };
 
-RegateText.markup = function (id) {
-  return '\n  <input\n    id=\'' + id + '__input\'\n    type=\'text\'\n    class=\'form-control\'\n  />\n';
+RegateTextarea.markup = function (id) {
+  return '\n  <textarea\n    id=\'' + id + '__input\'\n    class=\'form-control\'\n    style=\'resize: none;\'\n  ></textarea>\n';
 };
 
-// exports.default = RegateText;
-    window.Regate.RegateText = RegateText;
+RegateTextarea.Size = {
+  'Small': 150,
+  'Medium': 200,
+  'Large': 300
+};
+
+// exports.default = RegateTextarea;
+    window.Regate.RegateTextarea = RegateTextarea;
   }());";
         }
     }
