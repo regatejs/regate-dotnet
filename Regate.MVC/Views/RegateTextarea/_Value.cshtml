@@ -1,4 +1,13 @@
-﻿<div class="content">
+﻿@{
+    var value = @"سلام
+من خیلی خوشحال
+هستم
+'من خیلی خوشحال هستم'
+""خوشحال""
+    ";
+}
+
+<div class="content">
     <h2>Value</h2>
 
     <div class="regate-example-container">
@@ -6,7 +15,7 @@
             <form method="get">
                 <div class="row">
                     <div class="col-lg-10 col-md-9">
-                        @Html.Raw(RegateTextarea.Build("Title", "Hello World"))
+                        @Html.Raw(RegateTextarea.Build("Title", value))
                     </div>
                     <div class="col-lg-2 col-md-3">
                         <button type="submit" class="btn btn-block btn-primary">Submit</button>

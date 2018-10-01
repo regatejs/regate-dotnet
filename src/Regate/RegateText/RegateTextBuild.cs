@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Text.Encodings.Web;
 
 namespace Regate
 {
@@ -9,7 +10,9 @@ namespace Regate
         {
             var uniqueId = $"RegateText__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
 
-            var value = WebUtility.HtmlEncode(props.Value);
+            var value = string.IsNullOrWhiteSpace(props.Value) ? "" : props.Value;
+            value = JavaScriptEncoder.Default.Encode(value);
+
             var placeholder = WebUtility.HtmlEncode(props.Placeholder);
 
             return $@"
