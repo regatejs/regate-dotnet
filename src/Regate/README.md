@@ -9,5 +9,5 @@ To create a version:
 3. It will create a file like `Regate.0.3.0.nupkg` based on your version.
 4. Run the following command:
    ```
-   nuget push Regate.0.3.0.nupkg -Source https://api.nuget.org/v3/index.json
+   nuget push Regate.0.4.0.nupkg -Source https://api.nuget.org/v3/index.json
    ```
