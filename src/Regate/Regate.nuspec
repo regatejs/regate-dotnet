@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <title>Regate</title>
     <authors>Mojtaba Dashtinejad</authors>
     <owners>Mojtaba Dashtinejad</owners>
@@ -10,8 +10,8 @@
     <projectUrl>https://github.com/regatejs/regate-dotnet</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Components for building form inputs</description>
-    <releaseNotes>Initial Release of RegateText</releaseNotes>
+    <releaseNotes></releaseNotes>
     <copyright>Copyright 2018</copyright>
-    <tags>Regate RegateText</tags>
+    <tags>Regate</tags>
   </metadata>
 </package>
