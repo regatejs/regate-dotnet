@@ -13,7 +13,6 @@ namespace Regate
             var value = string.IsNullOrWhiteSpace(props.Value) ? "" : props.Value;
             value = JavaScriptEncoder.Default.Encode(value);
 
-            var placeholder = WebUtility.HtmlEncode(props.Placeholder);
 
             return $@"
                 <script>document.write(Regate.RegateText.markup('{uniqueId}'))</script>
@@ -23,7 +22,6 @@ namespace Regate
                         id: '{uniqueId}',
                         name: '{props.Name}',
                         value: '{value}',
-                        placeholder: '{placeholder}',
                         isRequired: {props.IsRequired.ToString().ToLower()},
                     }});
                 </script>

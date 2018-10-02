@@ -17,18 +17,6 @@ namespace Regate
         public static string Build(string name, string value, bool isRequired) =>
             _Build(new Props(name, value, isRequired));
 
-        public static string Build(string name, Options options) =>
-            _Build(new Props(name, options));
-
-        public static string Build(string name, bool isRequired, Options options) =>
-            _Build(new Props(name, isRequired, options));
-
-        public static string Build(string name, string value, Options options) =>
-            _Build(new Props(name, value, options));
-
-        public static string Build(string name, string value, bool isRequired, Options options) =>
-            _Build(new Props(name, value, isRequired, options));
-
     }
 
 }
