@@ -11,6 +11,7 @@ const components = [
   'RegateFile',
   'RegateImage',
   'RegateNumber',
+  'RegatePersianDateTimePicker',
 ]
 
 components.forEach(component => {

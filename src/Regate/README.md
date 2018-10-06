@@ -1,4 +1,4 @@
-To create a version:
+# To create a version:
 
 1. Open `Regate.nuspec` and change the version.
 2. In the command line, run the following command:
@@ -10,4 +10,14 @@ To create a version:
 4. Run the following command:
    ```
    nuget push Regate.0.4.0.nupkg -Source https://api.nuget.org/v3/index.json
+   ```
+
+
+# Build JavaScript csharp files
+
+1. Copy last dist folder from regate.
+2. Add new components to build.js file.
+3. In the command line, run the following command:
+   ```
+   node build.js
    ```
