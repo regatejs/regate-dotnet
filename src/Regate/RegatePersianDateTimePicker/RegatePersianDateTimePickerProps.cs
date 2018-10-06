@@ -13,7 +13,7 @@ namespace Regate
                 Name = name;
             }
 
-            public Props(string name, string value) : this(name)
+            public Props(string name, DateTime value) : this(name)
             {
                 Value = value;
             }
@@ -23,13 +23,13 @@ namespace Regate
                 IsRequired = isRequired;
             }
 
-            public Props(string name, string value, bool isRequired) : this(name, value)
+            public Props(string name, DateTime value, bool isRequired) : this(name, value)
             {
                 IsRequired = isRequired;
             }
 
             public string Name { get; }
-            public string Value { get; }
+            public DateTime? Value { get; }
             public bool IsRequired { get; }
         }
     }

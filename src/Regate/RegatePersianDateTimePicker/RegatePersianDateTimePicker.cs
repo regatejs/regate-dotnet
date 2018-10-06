@@ -11,10 +11,10 @@ namespace Regate
         public static string Build(string name, bool isRequired) =>
             _Build(new Props(name, isRequired));
 
-        public static string Build(string name, string value) =>
+        public static string Build(string name, DateTime value) =>
             _Build(new Props(name, value));
 
-        public static string Build(string name, string value, bool isRequired) =>
+        public static string Build(string name, DateTime value, bool isRequired) =>
             _Build(new Props(name, value, isRequired));
 
     }

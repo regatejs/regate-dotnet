@@ -10,10 +10,6 @@ namespace Regate
         {
             var uniqueId = $"RegatePersianDateTimePicker__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
 
-            var value = string.IsNullOrWhiteSpace(props.Value) ? "" : props.Value;
-            value = JavaScriptEncoder.Default.Encode(value);
-
-
             return $@"
                 <script>document.write(Regate.RegatePersianDateTimePicker.markup('{uniqueId}'))</script>
 
@@ -21,7 +17,7 @@ namespace Regate
                     Regate.RegatePersianDateTimePicker.init({{
                         id: '{uniqueId}',
                         name: '{props.Name}',
-                        value: '{value}',
+                        value: '{props.Value.ToString()}',
                         isRequired: {props.IsRequired.ToString().ToLower()},
                     }});
                 </script>
