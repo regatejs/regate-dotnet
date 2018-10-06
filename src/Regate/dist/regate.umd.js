@@ -83,7 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.RegateNumber = exports.RegateDropdown = exports.RegateCkeditor = exports.RegateContentEditable = exports.RegateTextarea = exports.RegateImage = exports.RegateFile = exports.RegateText = undefined;
+exports.RegatePersianDateTimePicker = exports.RegateKeyword = exports.RegateNumber = exports.RegateDropdown = exports.RegateCkeditor = exports.RegateContentEditable = exports.RegateTextarea = exports.RegateImage = exports.RegateFile = exports.RegateText = undefined;
 
 var _RegateText = __webpack_require__(1);
 
@@ -117,6 +117,14 @@ var _RegateNumber = __webpack_require__(8);
 
 var _RegateNumber2 = _interopRequireDefault(_RegateNumber);
 
+var _RegateKeyword = __webpack_require__(9);
+
+var _RegateKeyword2 = _interopRequireDefault(_RegateKeyword);
+
+var _RegatePersianDateTimePicker = __webpack_require__(10);
+
+var _RegatePersianDateTimePicker2 = _interopRequireDefault(_RegatePersianDateTimePicker);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.RegateText = _RegateText2.default;
@@ -127,6 +135,8 @@ exports.RegateContentEditable = _RegateContentEditable2.default;
 exports.RegateCkeditor = _RegateCkeditor2.default;
 exports.RegateDropdown = _RegateDropdown2.default;
 exports.RegateNumber = _RegateNumber2.default;
+exports.RegateKeyword = _RegateKeyword2.default;
+exports.RegatePersianDateTimePicker = _RegatePersianDateTimePicker2.default;
 
 /***/ }),
 /* 1 */
@@ -187,8 +197,18 @@ RegateText.init = function (_ref) {
   }
 };
 
+RegateText._markup = '\n  <input\n    id=\'{id}__input\'\n    type=\'text\'\n    class=\'form-control\'\n  />\n';
+
 RegateText.markup = function (id) {
-  return '\n  <input\n    id=\'' + id + '__input\'\n    type=\'text\'\n    class=\'form-control\'\n  />\n';
+  return RegateText.getMarkup().replace(/{id}/g, id);
+};
+
+RegateText.setMarkup = function (markup) {
+  return RegateText._markup = markup;
+};
+
+RegateText.getMarkup = function () {
+  return RegateText._markup;
 };
 
 exports.default = RegateText;
@@ -270,10 +290,6 @@ RegateFile.init = function (_ref) {
   };
 };
 
-RegateFile.markup = function (id) {
-  return '\n  <div data-role=\'RegateFile\'>\n      <div class=\'input-group\'>\n          <div class=\'input-group-prepend\'>\n              <button type=\'button\'\n                      class=\'btn btn-secondary\'\n                      id=\'' + id + '__upload\'>\n                  <i class=\'fa fa-search mr-1\'></i> CHOOSE\n              </button>\n          </div>\n\n          <input type=\'text\'\n                  style=\'pointer-events: none;\'\n                  onfocus=\'this.blur();\'\n                  id=\'' + id + '__input\'\n                  class=\'form-control\' />\n\n          <div class=\'input-group-append\'>\n              <button type=\'button\' class=\'btn btn-outline-secondary\' id=\'' + id + '__remove\' style=\'display: none;\'>\n                  <i class=\'fa fa-fw fa-times\'></i>\n              </button>\n              <a href=\'#\' target=\'_blank\' class=\'btn btn-outline-secondary\' id=\'' + id + '__view\' style=\'display: none;\'>\n                  <i class=\'fa fa-fw fa-download\'></i>\n              </a>\n          </div>\n      </div>\n  </div>\n';
-};
-
 RegateFile.set = function (id, value) {
   var _input = document.getElementById(id + '__input');
   var _remove = document.getElementById(id + '__remove');
@@ -292,6 +308,20 @@ RegateFile.set = function (id, value) {
     _view.style.display = 'none';
     _upload.style.display = '';
   }
+};
+
+RegateFile._markup = '\n  <div class=\'input-group\'>\n      <div class=\'input-group-prepend\'>\n          <button type=\'button\'\n                  class=\'btn btn-secondary\'\n                  id=\'{id}__upload\'>\n              <i class=\'fa fa-search mr-1\'></i> CHOOSE\n          </button>\n      </div>\n\n      <input type=\'text\'\n              style=\'pointer-events: none;\'\n              onfocus=\'this.blur();\'\n              id=\'{id}__input\'\n              class=\'form-control\' />\n\n      <div class=\'input-group-append\'>\n          <button type=\'button\' class=\'btn btn-outline-secondary\' id=\'{id}__remove\' style=\'display: none;\'>\n              <i class=\'fa fa-fw fa-times\'></i>\n          </button>\n          <a href=\'#\' target=\'_blank\' class=\'btn btn-outline-secondary\' id=\'{id}__view\' style=\'display: none;\'>\n              <i class=\'fa fa-fw fa-download\'></i>\n          </a>\n      </div>\n  </div>\n';
+
+RegateFile.markup = function (id) {
+  return RegateFile.getMarkup().replace(/{id}/g, id);
+};
+
+RegateFile.setMarkup = function (markup) {
+  return RegateFile._markup = markup;
+};
+
+RegateFile.getMarkup = function () {
+  return RegateFile._markup;
 };
 
 exports.default = RegateFile;
@@ -377,10 +407,6 @@ RegateImage.init = function (_ref) {
   };
 };
 
-RegateImage.markup = function (id) {
-  return '\n  <div data-role=\'RegateImage\'>\n      <div class=\'input-group\'>\n          <div class=\'input-group-prepend\'>\n              <button type=\'button\'\n                      class=\'btn btn-secondary\'\n                      id=\'' + id + '__upload\'>\n                  <i class=\'fa fa-search mr-1\'></i> CHOOSE\n              </button>\n          </div>\n\n          <input type=\'text\'\n                  style=\'pointer-events: none;\'\n                  onfocus=\'this.blur();\'\n                  id=\'' + id + '__input\'\n                  class=\'form-control\' />\n\n          <div class=\'input-group-append\'>\n              <button type=\'button\' class=\'btn btn-outline-secondary\' id=\'' + id + '__remove\' style=\'display: none;\'>\n                  <i class=\'fa fa-fw fa-times\'></i>\n              </button>\n              <a href=\'#\' target=\'_blank\' class=\'btn btn-outline-secondary\' id=\'' + id + '__view\' style=\'display: none;\'>\n                  <i class=\'fa fa-fw fa-download\'></i>\n              </a>\n          </div>\n      </div>\n      \n      <img id=\'' + id + '__image\'\n        style=\'display: none; max-width: 200px; max-height: 150px;\'\n      />\n  </div>\n';
-};
-
 RegateImage.set = function (id, value) {
   var _input = document.getElementById(id + '__input');
   var _remove = document.getElementById(id + '__remove');
@@ -407,6 +433,20 @@ RegateImage.set = function (id, value) {
     _view.href = '';
     _image.src = '';
   }
+};
+
+RegateImage._markup = '\n  <div>\n      <div class=\'input-group\'>\n          <div class=\'input-group-prepend\'>\n              <button type=\'button\'\n                      class=\'btn btn-secondary\'\n                      id=\'{id}__upload\'>\n                  <i class=\'fa fa-search mr-1\'></i> CHOOSE\n              </button>\n          </div>\n\n          <input type=\'text\'\n                  style=\'pointer-events: none;\'\n                  onfocus=\'this.blur();\'\n                  id=\'{id}__input\'\n                  class=\'form-control\' />\n\n          <div class=\'input-group-append\'>\n              <button type=\'button\' class=\'btn btn-outline-secondary\' id=\'{id}__remove\' style=\'display: none;\'>\n                  <i class=\'fa fa-fw fa-times\'></i>\n              </button>\n              <a href=\'#\' target=\'_blank\' class=\'btn btn-outline-secondary\' id=\'{id}__view\' style=\'display: none;\'>\n                  <i class=\'fa fa-fw fa-download\'></i>\n              </a>\n          </div>\n      </div>\n      \n      <img id=\'{id}__image\'\n        style=\'display: none; max-width: 200px; max-height: 150px;\'\n      />\n  </div>\n';
+
+RegateImage.markup = function (id) {
+  return RegateImage.getMarkup().replace(/{id}/g, id);
+};
+
+RegateImage.setMarkup = function (markup) {
+  return RegateImage._markup = markup;
+};
+
+RegateImage.getMarkup = function () {
+  return RegateImage._markup;
 };
 
 exports.default = RegateImage;
@@ -474,14 +514,24 @@ RegateTextarea.init = function (_ref) {
   _input.style.height = size + 'px';
 };
 
-RegateTextarea.markup = function (id) {
-  return '\n  <textarea\n    id=\'' + id + '__input\'\n    class=\'form-control\'\n    style=\'resize: none;\'\n  ></textarea>\n';
-};
-
 RegateTextarea.Size = {
   'Small': 150,
   'Medium': 200,
   'Large': 300
+};
+
+RegateTextarea._markup = '\n  <textarea\n    id=\'{id}__input\'\n    class=\'form-control\'\n    style=\'resize: none;\'\n  ></textarea>\n';
+
+RegateTextarea.markup = function (id) {
+  return RegateTextarea.getMarkup().replace(/{id}/g, id);
+};
+
+RegateTextarea.setMarkup = function (markup) {
+  return RegateTextarea._markup = markup;
+};
+
+RegateTextarea.getMarkup = function () {
+  return RegateTextarea._markup;
 };
 
 exports.default = RegateTextarea;
@@ -525,14 +575,24 @@ RegateContentEditable.init = function (_ref) {
   };
 };
 
-RegateContentEditable.markup = function (id) {
-  return '\n  <div>\n    <textarea\n      id=\'' + id + '__input\'\n      class=\'form-control\'\n      style=\'display: none;\'\n    ></textarea>\n    <div\n      class=\'form-control\'\n      style=\'height: auto !important\'\n      id=\'' + id + '__div\'\n      contenteditable=\'true\'\n    ></div>\n  </div>\n';
-};
-
 RegateContentEditable.DecodeEntities = function (encodedString) {
   var textArea = document.createElement('textarea');
   textArea.innerHTML = encodedString;
   return textArea.value;
+};
+
+RegateContentEditable._markup = '\n  <div>\n    <textarea\n      id=\'{id}__input\'\n      style=\'display: none;\'\n    ></textarea>\n    <div\n      class=\'form-control\'\n      style=\'height: auto !important\'\n      id=\'{id}__div\'\n      contenteditable=\'true\'\n    ></div>\n  </div>\n';
+
+RegateContentEditable.markup = function (id) {
+  return RegateContentEditable.getMarkup().replace(/{id}/g, id);
+};
+
+RegateContentEditable.setMarkup = function (markup) {
+  return RegateContentEditable._markup = markup;
+};
+
+RegateContentEditable.getMarkup = function () {
+  return RegateContentEditable._markup;
 };
 
 exports.default = RegateContentEditable;
@@ -578,14 +638,24 @@ RegateCkeditor.init = function (_ref) {
   ClassicEditor.create(_input);
 };
 
-RegateCkeditor.markup = function (id) {
-  return '\n  <textarea\n    id=\'' + id + '__input\'\n    class=\'form-control\'\n  ></textarea>\n';
-};
-
 RegateCkeditor.DecodeEntities = function (encodedString) {
   var textArea = document.createElement('textarea');
   textArea.innerHTML = encodedString;
   return textArea.value;
+};
+
+RegateCkeditor._markup = '\n  <textarea\n    id=\'{id}__input\'\n    class=\'form-control\'\n  ></textarea>\n';
+
+RegateCkeditor.markup = function (id) {
+  return RegateCkeditor.getMarkup().replace(/{id}/g, id);
+};
+
+RegateCkeditor.setMarkup = function (markup) {
+  return RegateCkeditor._markup = markup;
+};
+
+RegateCkeditor.getMarkup = function () {
+  return RegateCkeditor._markup;
 };
 
 exports.default = RegateCkeditor;
@@ -653,9 +723,20 @@ RegateDropdown.init = function (_ref) {
   }
 };
 
+RegateDropdown._markup = '\n  <select\n    id=\'{id}__input\'\n    class=\'form-control\'\n  ></select>\n';
+
 RegateDropdown.markup = function (id) {
-  return '\n  <select\n    id=\'' + id + '__input\'\n    class=\'form-control\'\n  ></select>\n';
+  return RegateDropdown.getMarkup().replace(/{id}/g, id);
 };
+
+RegateDropdown.setMarkup = function (markup) {
+  return RegateDropdown._markup = markup;
+};
+
+RegateDropdown.getMarkup = function () {
+  return RegateDropdown._markup;
+};
+
 exports.default = RegateDropdown;
 
 /***/ }),
@@ -701,11 +782,195 @@ RegateNumber.init = function (_ref) {
   if (step !== undefined) _input.step = step;
 };
 
+RegateNumber._markup = '\n  <input\n    id=\'{id}__input\'\n    type=\'number\'\n    class=\'form-control\'\n  />\n';
+
 RegateNumber.markup = function (id) {
-  return '\n  <input\n    id=\'' + id + '__input\'\n    type=\'number\'\n    class=\'form-control\'\n  />\n';
+  return RegateNumber.getMarkup().replace(/{id}/g, id);
+};
+
+RegateNumber.setMarkup = function (markup) {
+  return RegateNumber._markup = markup;
+};
+
+RegateNumber.getMarkup = function () {
+  return RegateNumber._markup;
 };
 
 exports.default = RegateNumber;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var RegateKeyword = {};
+
+RegateKeyword.init = function (_ref) {
+    var id = _ref.id,
+        name = _ref.name,
+        _ref$keywords = _ref.keywords,
+        keywords = _ref$keywords === undefined ? [] : _ref$keywords;
+
+
+    if (id === undefined) throw new Error('id is required');
+
+    var _input = document.getElementById(id + '__input');
+
+    if (_input === undefined) throw new Error('id is invalid');
+
+    _input.name = name;
+
+    // this component depends on Vue
+    if ((typeof Vue === 'undefined' ? 'undefined' : _typeof(Vue)) === ( true ? 'undefined' : _typeof(undefined))) {
+        console.log('please include Vuejs before using RegateKeyword');
+        return false;
+    }
+
+    keywords = RegateKeyword.NormalizeKeywords(keywords);
+
+    new Vue({
+        el: '#' + id + '__app',
+        data: {
+            newTodoText: '',
+            items: keywords
+        },
+        methods: {
+            addNewTodo: function addNewTodo() {
+                this.items.push(this.newTodoText);
+                this.newTodoText = '';
+            },
+            deleteItem: function deleteItem(index) {
+                this.items.splice(index, 1);
+            },
+            filterData: function filterData() {
+                return this.items.filter(function (item) {
+                    return item.length > 0;
+                });
+            },
+            addItem: function addItem() {
+                if (this.newTodoText) {
+                    this.addNewTodo();
+                }
+            }
+        }
+    });
+};
+
+RegateKeyword.NormalizeKeywords = function (keywords) {
+    return keywords ? Array.isArray(keywords) ? keywords : [keywords] : [];
+};
+
+RegateKeyword._markup = '\n  <div id=\'{id}__app\'>\n    <textarea\n      id=\'{id}__input\'\n      class=\'form-control\'\n      style=\'display: none\'\n    >{{filterData()}}</textarea>\n\n    <div>\n        <draggable :list="items" v-model="items" :options="{handle:\'.handle\'}">\n            <div v-for="(item, index) in items" style=\'margin-bottom: 2px;\'>\n                <div class="input-group">\n                    <div class="input-group-prepend handle">\n                        <span class="input-group-text">\n                            <i class="fa fa-fw fa-bars" style=\'opacity: 0.3;\'></i>\n                        </span>\n                    </div>\n                    \n                    <input class="form-control"\n                        type="text"\n                        v-model="items[index]"\n                        v-on:keydown.enter.prevent\n                    />\n\n                    <div class="input-group-append">\n                        <button type="button" class="btn btn-danger" v-on:click="deleteItem(index)">\n                            <i class="fa fa-fw fa-times"></i>\n                        </button>\n                    </div>\n                </div>\n            </div>\n        </draggable>\n\n        <div class="input-group">\n            <div class="input-group-prepend" style=\'opacity: 0.5;\'>\n                <span class="input-group-text">\n                    <i class="fa fa-fw fa-bars" style=\'opacity: 0.3;\'></i>\n                </span>\n                \n            </div>\n            \n            <input class="form-control"\n                type="text"\n                v-model="newTodoText"\n                v-on:keyup.enter="addItem"\n                v-on:keydown.enter.prevent\n            />\n\n            <div class="input-group-append">\n                <button type="button" class="btn btn-success" v-on:click="addItem">\n                    <i class="fa fa-fw fa-plus"></i>\n                </button>\n            </div>\n        </div>\n    </div>\n  </div>\n';
+
+RegateKeyword.markup = function (id) {
+    return RegateKeyword.getMarkup().replace(/{id}/g, id);
+};
+
+RegateKeyword.setMarkup = function (markup) {
+    return RegateKeyword._markup = markup;
+};
+
+RegateKeyword.getMarkup = function () {
+    return RegateKeyword._markup;
+};
+
+exports.default = RegateKeyword;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var RegatePersianDateTimePicker = {};
+
+RegatePersianDateTimePicker.init = function (_ref) {
+  var id = _ref.id,
+      name = _ref.name,
+      _ref$value = _ref.value,
+      value = _ref$value === undefined ? '' : _ref$value,
+      _ref$isRequired = _ref.isRequired,
+      isRequired = _ref$isRequired === undefined ? false : _ref$isRequired,
+      _ref$hasTimePicker = _ref.hasTimePicker,
+      hasTimePicker = _ref$hasTimePicker === undefined ? false : _ref$hasTimePicker,
+      _ref$isTimeFrom = _ref.isTimeFrom,
+      isTimeFrom = _ref$isTimeFrom === undefined ? false : _ref$isTimeFrom,
+      _ref$isTimeTill = _ref.isTimeTill,
+      isTimeTill = _ref$isTimeTill === undefined ? false : _ref$isTimeTill,
+      _ref$isNow = _ref.isNow,
+      isNow = _ref$isNow === undefined ? false : _ref$isNow;
+
+
+  if (id === undefined) throw new Error('id is required');
+
+  var _inputShamsi = document.getElementById(id + '__shamsi');
+  var _inputMiladi = document.getElementById(id + '__miladi');
+  var _clear = document.getElementById(id + '__clear');
+
+  if (_inputShamsi === undefined) throw new Error('id is invalid');
+
+  _inputMiladi.name = name;
+
+  if (isRequired === true) _inputShamsi.required = true;
+
+  var options = {
+    targetTextSelector: '#' + id + '__shamsi',
+    targetDateSelector: '#' + id + '__miladi',
+    isGregorian: false,
+    enableTimePicker: false,
+    yearOffset: 100,
+    dateFormat: 'yyyy/MM/dd',
+    textFormat: 'yyyy/MM/dd'
+  };
+
+  if (hasTimePicker) {
+    options.enableTimePicker = true;
+    options.dateFormat = 'yyyy/MM/dd HH:mm:ss';
+    options.textFormat = 'yyyy/MM/dd HH:mm:ss';
+  }
+
+  if (isTimeFrom) options.dateFormat = 'yyyy/MM/dd 00:00:00';
+
+  if (isTimeTill) options.dateFormat = 'yyyy/MM/dd 23:59:59';
+
+  $('#' + id).MdPersianDateTimePicker(options);
+
+  if (value) $('#' + id).MdPersianDateTimePicker('setDate', new Date(value));
+
+  if (isNow) $('#' + id).MdPersianDateTimePicker('setDate', new Date());
+
+  _clear.onclick = function () {
+    $('#' + id).MdPersianDateTimePicker('clearDate');
+  };
+};
+
+RegatePersianDateTimePicker._markup = '\n<div class="input-group">\n  <div class="input-group-prepend">\n      <span class="input-group-text cursor-pointer" id="{id}" style=\'cursor: pointer;\'>\n        <i class="fa fa-calendar-alt"></i>\n      </span>\n  </div>\n  <input\n    type="text"\n    style=\'pointer-events: none;\'\n    onfocus=\'this.blur();\'\n    id="{id}__shamsi"\n    class="form-control"\n  />\n  <div class="input-group-append">\n      <span class="input-group-text cursor-pointer" id="{id}__clear" style=\'cursor: pointer;\'>\n        <i class="fa fa-times"></i>\n      </span>\n  </div>\n  <input type="hidden" id="{id}__miladi" class="form-control" />\n</div>\n';
+
+RegatePersianDateTimePicker.markup = function (id) {
+  return RegatePersianDateTimePicker.getMarkup().replace(/{id}/g, id);
+};
+
+RegatePersianDateTimePicker.setMarkup = function (markup) {
+  return RegatePersianDateTimePicker._markup = markup;
+};
+
+RegatePersianDateTimePicker.getMarkup = function () {
+  return RegatePersianDateTimePicker._markup;
+};
+
+exports.default = RegatePersianDateTimePicker;
 
 /***/ })
 /******/ ]);
