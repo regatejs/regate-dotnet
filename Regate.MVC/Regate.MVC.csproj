@@ -44,6 +44,18 @@
     <Content Update="Views\RegateCkeditor\_Value.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\RegatePersianDateTimePicker\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RegatePersianDateTimePicker\_Basic.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RegatePersianDateTimePicker\_IsRequired.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RegatePersianDateTimePicker\_Value.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\RegateTextarea\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
