@@ -10,23 +10,34 @@ namespace Regate
 {
     public static partial class RegateDropdown
     {
-        public static string Build(string name) =>
-            _Build(new Props(name));
+        public static string Build<T>(string name) =>
+            _Build(new Props(name, EnumToList<T>()));
 
-        public static string Build(string name, bool isRequired) =>
-            _Build(new Props(name, isRequired));
+        public static string Build<T>(string name, int? value) =>
+            _Build(new Props(name, EnumToList<T>(), value));
 
-        public static string Build(string name, int? value) =>
-            _Build(new Props(name, value));
+        public static string Build<T>(string name, bool isRequired) =>
+            _Build(new Props(name, EnumToList<T>(), isRequired));
 
-        public static string Build(string name, int? value, bool isRequired) =>
-            _Build(new Props(name, value, isRequired));
+        public static string Build<T>(string name, int? value, bool isRequired) =>
+            _Build(new Props(name, EnumToList<T>(), value, isRequired));
+
 
         public static string Build(string name, List<KeyValuePair<int, string>> options) =>
             _Build(new Props(name, options));
 
+        public static string Build(string name, List<KeyValuePair<int, string>> options, int? value) =>
+            _Build(new Props(name, options, value));
 
-        public static List<KeyValuePair<int, string>> EnumToList<T>()
+        public static string Build(string name, List<KeyValuePair<int, string>> options, bool isRequired) =>
+            _Build(new Props(name, options, isRequired));
+
+        public static string Build(string name, List<KeyValuePair<int, string>> options, int? value, bool isRequired) =>
+            _Build(new Props(name, options, value, isRequired));
+
+
+
+        private static List<KeyValuePair<int, string>> EnumToList<T>()
         {
             Type enumType = typeof(T);
 

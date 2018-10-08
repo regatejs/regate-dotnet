@@ -13,14 +13,7 @@ namespace Regate
         {
             var uniqueId = $"RegateDropdown__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
 
-            var emptyOptions = new List<KeyValuePair<int, string>>
-            {
-                new KeyValuePair<int, string>(0, " "),
-            };
-
-            var options = (props.Options?.Count == 0) ? emptyOptions : props.Options;
-
-            var optionsJsonString = JsonConvert.SerializeObject(options,
+            var optionsJsonString = JsonConvert.SerializeObject(props.Options,
                 new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
 
             return $@"
