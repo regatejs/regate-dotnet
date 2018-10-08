@@ -17,7 +17,8 @@
                                 new KeyValuePair<int, string>(3, "پرتقال"),
                             };
                         }
-                        @Html.Raw(RegateDropdown.Build("Fruit", options))
+
+                        @Html.Raw(RegateDropdown.Build("Fruit", RegateDropdown.EnumToList(typeof(FruitsEnum))))
                     </div>
                     <div class="col-lg-2 col-md-3">
                         <button type="submit" class="btn btn-block btn-primary">Submit</button>
