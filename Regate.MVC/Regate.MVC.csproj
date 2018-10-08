@@ -56,6 +56,12 @@
     <Content Update="Views\RegatePersianDateTimePicker\_Value.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\RegateDropdown\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RegateDropdown\_Basic.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\RegateTextarea\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
