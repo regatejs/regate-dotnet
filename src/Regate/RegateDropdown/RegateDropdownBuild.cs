@@ -13,12 +13,12 @@ namespace Regate
         {
             var uniqueId = $"RegateDropdown__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
 
-            var options = new List<KeyValuePair<int, string>>
+            var emptyOptions = new List<KeyValuePair<int, string>>
             {
-                new KeyValuePair<int, string>(1, "سیب"),
-                new KeyValuePair<int, string>(2, "پرتقال"),
-                new KeyValuePair<int, string>(3, "هلو"),
+                new KeyValuePair<int, string>(0, " "),
             };
+
+            var options = (props.Options?.Count == 0) ? emptyOptions : props.Options;
 
             var optionsJsonString = JsonConvert.SerializeObject(options,
                 new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });

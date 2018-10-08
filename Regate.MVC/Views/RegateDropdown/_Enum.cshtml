@@ -1,0 +1,32 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using Regate.MVC.SSOT
+
+<div class="content">
+    <h2>Enum</h2>
+
+    <div class="regate-example-container">
+        <div class="regate-example">
+            <form method="get">
+                <div class="row">
+                    <div class="col-lg-10 col-md-9">
+                        @{
+                            var options = new List<KeyValuePair<int, string>>
+                            {
+                                new KeyValuePair<int, string>(1, "هلو"),
+                                new KeyValuePair<int, string>(2, "سیب"),
+                                new KeyValuePair<int, string>(3, "پرتقال"),
+                            };
+                        }
+                        @Html.Raw(RegateDropdown.Build("Fruit", options))
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <button type="submit" class="btn btn-block btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    
+        <div class="regate-code"><pre><code class="javascript">&#64;Html.Raw(RegateDropdown.Build("Title"))</code></pre></div>
+        <div class="regate-serialize bg-gray-dark text-gray-lighter"></div>
+    </div>
+</div>

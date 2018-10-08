@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 
 namespace Regate
@@ -23,6 +24,11 @@ namespace Regate
                 IsRequired = isRequired;
             }
 
+            public Props(string name, List<KeyValuePair<int, string>> options) : this(name)
+            {
+                Options = options;
+            }
+
             public Props(string name, int? value, bool isRequired) : this(name, value)
             {
                 IsRequired = isRequired;
@@ -31,6 +37,7 @@ namespace Regate
             public string Name { get; }
             public int? Value { get; }
             public bool IsRequired { get; }
+            public List<KeyValuePair<int, string>> Options { get; set; }
         }
     }
 

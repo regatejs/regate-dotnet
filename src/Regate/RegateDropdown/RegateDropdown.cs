@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 
 namespace Regate
@@ -17,6 +18,8 @@ namespace Regate
         public static string Build(string name, int? value, bool isRequired) =>
             _Build(new Props(name, value, isRequired));
 
+        public static string Build(string name, List<KeyValuePair<int, string>> options) =>
+            _Build(new Props(name, options));
     }
 
 }
