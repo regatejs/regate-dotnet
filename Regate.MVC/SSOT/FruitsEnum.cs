@@ -9,13 +9,12 @@ namespace Regate.MVC.SSOT
     public enum FruitsEnum
     {
 
-        [Display(Name = "سیب")]
+        [Display(Name = "Apples")]
         Apple = 1,
 
-        [Display(Name = "پرتقال")]
+        [Display(Name = "Oranges")]
         Orange = 2,
 
-        [Display(Name = "هلو")]
         Peach = 3,
 
     }

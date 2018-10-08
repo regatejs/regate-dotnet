@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 
 namespace Regate
 {
@@ -37,9 +39,32 @@ namespace Regate
             return items;
         }
 
-        private static string GetEnumDisplayValue(Enum enumName)
+        /// <summary>
+        ///     A generic extension method that aids in reflecting 
+        ///     and retrieving any attribute that is applied to an `Enum`.
+        /// 
+        /// By: Mojtaba Dashtinejad
+        /// https://stackoverflow.com/a/25109103/3971911
+        /// </summary>
+        private static string GetEnumDisplayValue(Enum enumValue)
         {
-            return enumName.ToString();
+            if (enumValue == null) return "";
+
+            try
+            {
+                var model = enumValue.GetType()
+                    .GetMember(enumValue.ToString())
+                    .First()
+                    .GetCustomAttribute<DisplayAttribute>();
+
+                return model != null && ! string.IsNullOrWhiteSpace(model.Name)
+                    ? model.Name
+                    : enumValue.ToString();
+            }
+            catch (Exception)
+            {
+                return enumValue.ToString();
+            }
         }
     }
 
