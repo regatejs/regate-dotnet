@@ -24,8 +24,10 @@ namespace Regate
             _Build(new Props(name, options));
 
 
-        public static List<KeyValuePair<int, string>> EnumToList(Type enumType)
+        public static List<KeyValuePair<int, string>> EnumToList<T>()
         {
+            Type enumType = typeof(T);
+
             var items = new List<KeyValuePair<int, string>>();
 
             var values = Enum.GetValues(enumType);
