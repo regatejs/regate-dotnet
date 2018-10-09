@@ -21,6 +21,7 @@ namespace Regate
                         isRequired: {props.IsRequired.ToString().ToLower()},
                         isTimeFrom: {props.IsTimeFrom.ToString().ToLower()},
                         isTimeTill: {props.IsTimeTill.ToString().ToLower()},
+                        hasTimePicker: {props.HasTimePicker.ToString().ToLower()},
                     }});
                 </script>
             ";

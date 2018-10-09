@@ -34,9 +34,9 @@ namespace Regate
             public string Name { get; set; }
             public DateTime? Value { get; set; }
             public bool IsRequired { get; set; }
-
             public bool IsTimeFrom { get; set; }
             public bool IsTimeTill { get; set; }
+            public bool HasTimePicker { get; set; }
         }
     }
 
