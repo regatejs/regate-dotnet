@@ -19,6 +19,8 @@ namespace Regate
                         name: '{props.Name}',
                         value: '{props.Value.ToString()}',
                         isRequired: {props.IsRequired.ToString().ToLower()},
+                        isTimeFrom: {props.IsTimeFrom.ToString().ToLower()},
+                        isTimeTill: {props.IsTimeTill.ToString().ToLower()},
                     }});
                 </script>
             ";

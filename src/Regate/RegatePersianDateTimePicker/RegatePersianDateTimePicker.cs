@@ -17,6 +17,21 @@ namespace Regate
         public static string Build(string name, DateTime? value, bool isRequired) =>
             _Build(new Props(name, value, isRequired));
 
+        public static string Build(
+              string name
+            , DateTime? value = null
+            , bool isRequired = false
+            , bool isTimeFrom = false
+            , bool isTimeTill = false
+        ) =>
+            _Build(new Props
+            {
+                Name = name,
+                Value = value,
+                IsRequired = isRequired,
+                IsTimeFrom = isTimeFrom,
+                IsTimeTill = isTimeTill,
+            });
     }
 
 }

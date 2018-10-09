@@ -59,6 +59,9 @@
     <Content Update="Views\RegatePersianDateTimePicker\_IsRequired.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\RegatePersianDateTimePicker\_From.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\RegatePersianDateTimePicker\_Value.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
