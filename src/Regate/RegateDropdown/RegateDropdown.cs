@@ -22,13 +22,13 @@ namespace Regate
         public static string Build<T>(string name, int? value, bool isRequired) =>
             _Build(new Props(name, EnumToList<T>(), value, isRequired));
 
-        public static string Build<T>(string name, T value) =>
+        public static string Build<T>(string name, Enum value) =>
             _Build(value == null
                 ? new Props(name, EnumToList<T>())
                 : new Props(name, EnumToList<T>(), Convert.ToInt32(value))
             );
 
-        public static string Build<T>(string name, T value, bool isRequired) =>
+        public static string Build<T>(string name, Enum value, bool isRequired) =>
             _Build(value == null
                 ? new Props(name, EnumToList<T>(), isRequired)
                 : new Props(name, EnumToList<T>(), Convert.ToInt32(value), isRequired)
