@@ -9,31 +9,23 @@ namespace Regate
         
         private class Props
         {
-            public Props(string name, List<KeyValuePair<int, string>> options)
+            public Props()
             {
-                Name = name;
-                Options = options;
             }
 
-            public Props(string name, List<KeyValuePair<int, string>> options, int? value) : this(name, options)
+            public Props(string name)
+            {
+                Name = name;
+            }
+
+            public Props(string name, int? value) : this(name)
             {
                 Value = value;
             }
 
-            public Props(string name, List<KeyValuePair<int, string>> options, bool isRequired) : this(name, options)
-            {
-                IsRequired = isRequired;
-            }
-
-
-            public Props(string name, List<KeyValuePair<int, string>> options, int? value, bool isRequired) : this(name, options, value)
-            {
-                IsRequired = isRequired;
-            }
-
             public string Name { get; }
             public int? Value { get; }
-            public bool IsRequired { get; }
+            public bool IsRequired { get; set; }
             public List<KeyValuePair<int, string>> Options { get; set; }
         }
     }
