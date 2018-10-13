@@ -39,18 +39,17 @@ namespace Regate
               string name
             , Enum value = null
             , bool isRequired = false
-            , List<KeyValuePair<int, string>> options = null
         ) =>
             _Build(value == null
                 ? new Props(name)
                 {
                     IsRequired = isRequired,
-                    Options = options,
+                    Options = EnumToList<T>(),
                 }
                 : new Props(name, Convert.ToInt32(value))
                 {
                     IsRequired = isRequired,
-                    Options = options,
+                    Options = EnumToList<T>(),
                 });
 
 
