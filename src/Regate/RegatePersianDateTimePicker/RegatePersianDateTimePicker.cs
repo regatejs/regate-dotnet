@@ -19,10 +19,8 @@ namespace Regate
             , bool isTimeTill = false
             , bool hasTimePicker = false
         ) =>
-            _Build(new Props
+            _Build(new Props(name, value)
             {
-                Name = name,
-                Value = value,
                 IsRequired = isRequired,
                 IsTimeFrom = isTimeFrom,
                 IsTimeTill = isTimeTill,

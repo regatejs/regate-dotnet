@@ -21,8 +21,9 @@ namespace Regate
                 Value = value;
             }
 
-            public string Name { get; set; }
-            public DateTime? Value { get; set; }
+            public string Name { get; }
+            public DateTime? Value { get; }
+
             public bool IsRequired { get; set; }
             public bool IsTimeFrom { get; set; }
             public bool IsTimeTill { get; set; }
