@@ -32,6 +32,15 @@ namespace Regate
                 ? new Props(apiUrl, name)
                 : new Props(apiUrl, name, value.ToString())
             );
+
+        public static string Build(string apiUrl, string name, Guid value) =>
+            _Build(new Props(apiUrl, name, value.ToString()));
+
+        public static object Build(string apiUrl, string name, Enum value) =>
+            _Build(value == null
+                ? new Props(apiUrl, name)
+                : new Props(apiUrl, name, Convert.ToInt32(value).ToString())
+            );
     }
 
 }
