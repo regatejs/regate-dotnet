@@ -26,6 +26,9 @@
     <Content Update="Views\RegateForeignKey\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\RegateForeignKey\_Value.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\RegateForeignKey\_Basic.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
