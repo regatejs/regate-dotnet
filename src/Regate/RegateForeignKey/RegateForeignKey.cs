@@ -26,6 +26,12 @@ namespace Regate
                 {
                     IsRequired = isRequired,
                 });
+
+        public static string Build(string apiUrl, string name, int? value) =>
+            _Build(value == null
+                ? new Props(apiUrl, name)
+                : new Props(apiUrl, name, value.ToString())
+            );
     }
 
 }
