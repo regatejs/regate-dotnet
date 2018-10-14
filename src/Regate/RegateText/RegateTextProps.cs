@@ -18,19 +18,9 @@ namespace Regate
                 Value = value;
             }
 
-            public Props(string name, bool isRequired) : this(name)
-            {
-                IsRequired = isRequired;
-            }
-
-            public Props(string name, string value, bool isRequired) : this(name, value)
-            {
-                IsRequired = isRequired;
-            }
-
             public string Name { get; }
             public string Value { get; }
-            public bool IsRequired { get; }
+            public bool IsRequired { get; set; }
         }
     }
 
