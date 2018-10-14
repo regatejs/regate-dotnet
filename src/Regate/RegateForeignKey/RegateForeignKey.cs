@@ -20,11 +20,14 @@ namespace Regate
         public static string Build(string apiUrl, string name, Guid value) =>
             _Build(new Props(apiUrl, name, value.ToString()));
 
+
+        /*
         public static object Build(string apiUrl, string name, Enum value) =>
             _Build(value == null
                 ? new Props(apiUrl, name)
                 : new Props(apiUrl, name, Convert.ToInt32(value).ToString())
             );
+        */
 
         public static string Build(
             string apiUrl
@@ -45,6 +48,17 @@ namespace Regate
         public static string Build(
             string apiUrl
             , string name
+            , bool isRequired = false
+        ) =>
+            _Build(new Props(apiUrl, name)
+            {
+                IsRequired = isRequired,
+            });
+
+        /*
+        public static string Build(
+            string apiUrl
+            , string name
             , Guid value
             , bool isRequired = false
         ) =>
@@ -52,7 +66,9 @@ namespace Regate
             {
                 IsRequired = isRequired,
             });
+        */
 
+        /*
         public static string Build(
               string apiUrl
             , string name
@@ -68,6 +84,7 @@ namespace Regate
                 {
                     IsRequired = isRequired,
                 });
+        */
 
         public static string Build(
               string apiUrl
