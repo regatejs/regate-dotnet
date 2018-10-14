@@ -17,7 +17,8 @@ namespace Regate
                     Regate.RegateForeignKey.init({{
                         id: '{uniqueId}',
                         name: '{props.Name}',
-                        value: '{value}',
+                        value: '{props.Value}',
+                        apiUrl: '{props.ApiUrl}',
                         isRequired: {props.IsRequired.ToString().ToLower()},
                     }});
                 </script>
