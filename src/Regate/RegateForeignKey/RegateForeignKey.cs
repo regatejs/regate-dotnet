@@ -9,7 +9,7 @@ namespace Regate
             _Build(new Props(apiUrl, name));
 
         public static string Build(string apiUrl, string name, string value) =>
-            _Build(new Props(name, value));
+            _Build(new Props(apiUrl, name, value));
 
     }
 
