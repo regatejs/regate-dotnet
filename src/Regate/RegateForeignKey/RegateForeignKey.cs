@@ -11,22 +11,6 @@ namespace Regate
         public static string Build(string apiUrl, string name, string value) =>
             _Build(new Props(apiUrl, name, value));
 
-        public static string Build(
-              string apiUrl
-            , string name
-            , string value = null
-            , bool isRequired = false
-        ) =>
-            _Build(value == null
-                ? new Props(apiUrl, name)
-                {
-                    IsRequired = isRequired,
-                }
-                : new Props(apiUrl, name, value)
-                {
-                    IsRequired = isRequired,
-                });
-
         public static string Build(string apiUrl, string name, int? value) =>
             _Build(value == null
                 ? new Props(apiUrl, name)
@@ -41,6 +25,65 @@ namespace Regate
                 ? new Props(apiUrl, name)
                 : new Props(apiUrl, name, Convert.ToInt32(value).ToString())
             );
+
+        public static string Build(
+            string apiUrl
+            , string name
+            , string value = null
+            , bool isRequired = false
+        ) =>
+            _Build(value == null
+                ? new Props(apiUrl, name)
+                {
+                    IsRequired = isRequired,
+                }
+                : new Props(apiUrl, name, value)
+                {
+                    IsRequired = isRequired,
+                });
+
+        public static string Build(
+            string apiUrl
+            , string name
+            , Guid value
+            , bool isRequired = false
+        ) =>
+            _Build(new Props(apiUrl, name, value.ToString())
+            {
+                IsRequired = isRequired,
+            });
+
+        public static string Build(
+              string apiUrl
+            , string name
+            , Enum value = null
+            , bool isRequired = false
+        ) =>
+            _Build(value == null
+                ? new Props(apiUrl, name)
+                {
+                    IsRequired = isRequired,
+                }
+                : new Props(apiUrl, name, Convert.ToInt32(value).ToString())
+                {
+                    IsRequired = isRequired,
+                });
+
+        public static string Build(
+              string apiUrl
+            , string name
+            , int? value = null
+            , bool isRequired = false
+        ) =>
+            _Build(value == null
+                ? new Props(apiUrl, name)
+                {
+                    IsRequired = isRequired,
+                }
+                : new Props(apiUrl, name, value.ToString())
+                {
+                    IsRequired = isRequired,
+                });
     }
 
 }
