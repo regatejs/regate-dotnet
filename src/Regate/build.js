@@ -12,6 +12,8 @@ const components = [
   'RegateImage',
   'RegateNumber',
   'RegatePersianDateTimePicker',
+  'RegateSwitch',
+  'RegateForeignKey',
 ]
 
 components.forEach(component => {

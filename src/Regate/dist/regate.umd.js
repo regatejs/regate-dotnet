@@ -83,7 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.RegatePersianDateTimePicker = exports.RegateKeyword = exports.RegateNumber = exports.RegateDropdown = exports.RegateCkeditor = exports.RegateContentEditable = exports.RegateTextarea = exports.RegateImage = exports.RegateFile = exports.RegateText = undefined;
+exports.RegateForeignKey = exports.RegateSwitch = exports.RegatePersianDateTimePicker = exports.RegateKeyword = exports.RegateNumber = exports.RegateDropdown = exports.RegateCkeditor = exports.RegateContentEditable = exports.RegateTextarea = exports.RegateImage = exports.RegateFile = exports.RegateText = undefined;
 
 var _RegateText = __webpack_require__(1);
 
@@ -125,6 +125,14 @@ var _RegatePersianDateTimePicker = __webpack_require__(10);
 
 var _RegatePersianDateTimePicker2 = _interopRequireDefault(_RegatePersianDateTimePicker);
 
+var _RegateSwitch = __webpack_require__(11);
+
+var _RegateSwitch2 = _interopRequireDefault(_RegateSwitch);
+
+var _RegateForeignKey = __webpack_require__(12);
+
+var _RegateForeignKey2 = _interopRequireDefault(_RegateForeignKey);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.RegateText = _RegateText2.default;
@@ -137,6 +145,8 @@ exports.RegateDropdown = _RegateDropdown2.default;
 exports.RegateNumber = _RegateNumber2.default;
 exports.RegateKeyword = _RegateKeyword2.default;
 exports.RegatePersianDateTimePicker = _RegatePersianDateTimePicker2.default;
+exports.RegateSwitch = _RegateSwitch2.default;
+exports.RegateForeignKey = _RegateForeignKey2.default;
 
 /***/ }),
 /* 1 */
@@ -972,6 +982,190 @@ RegatePersianDateTimePicker.getMarkup = function () {
 };
 
 exports.default = RegatePersianDateTimePicker;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var RegateSwitch = {};
+
+RegateSwitch.init = function (_ref) {
+  var id = _ref.id,
+      name = _ref.name,
+      _ref$isChecked = _ref.isChecked,
+      isChecked = _ref$isChecked === undefined ? false : _ref$isChecked,
+      _ref$size = _ref.size,
+      size = _ref$size === undefined ? RegateSwitch.Size.Medium : _ref$size;
+
+
+  if (id === undefined) throw new Error('id is required');
+
+  var _input = document.getElementById(id + '__input');
+
+  if (_input === undefined) throw new Error('id is invalid');
+
+  _input.name = name;
+
+  if ((typeof Switch === 'undefined' ? 'undefined' : _typeof(Switch)) === ( true ? 'undefined' : _typeof(undefined))) throw new Error('Switch plugin does not loaded in the page');
+
+  new Switch(_input, {
+    size: size,
+    checked: isChecked
+  });
+};
+
+RegateSwitch.Size = {
+  'Small': 'small',
+  'Medium': 'default',
+  'Large': 'large'
+};
+
+RegateSwitch._markup = '\n  <input\n    id=\'{id}__input\'\n    type=\'checkbox\'\n    value=\'true\'\n  />\n';
+
+RegateSwitch.markup = function (id) {
+  return RegateSwitch.getMarkup().replace(/{id}/g, id);
+};
+
+RegateSwitch.setMarkup = function (markup) {
+  return RegateSwitch._markup = markup;
+};
+
+RegateSwitch.getMarkup = function () {
+  return RegateSwitch._markup;
+};
+
+exports.default = RegateSwitch;
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var RegateForeignKey = {};
+
+RegateForeignKey.init = function (_ref) {
+  var id = _ref.id,
+      name = _ref.name,
+      value = _ref.value,
+      apiUrl = _ref.apiUrl,
+      _ref$placeholder = _ref.placeholder,
+      placeholder = _ref$placeholder === undefined ? '' : _ref$placeholder,
+      _ref$isRequired = _ref.isRequired,
+      isRequired = _ref$isRequired === undefined ? false : _ref$isRequired;
+
+
+  if (id === undefined) throw new Error('id is required');
+
+  var _input = document.getElementById(id + '__input');
+
+  if (_input === undefined) throw new Error('id is invalid');
+
+  if (apiUrl === undefined) throw new Error('apiUrl is required');
+
+  _input.name = name;
+
+  var _option = document.createElement('option');
+  _option.value = '';
+  _option.text = placeholder;
+
+  if (isRequired) _option.hidden = true;
+
+  _input.appendChild(_option);
+
+  if (value) {
+    var _option2 = document.createElement('option');
+    _option2.id = id + '__hidden_value_input';
+    _option2.value = value;
+    _option2.hidden = true;
+    _input.appendChild(_option2);
+
+    _input.value = value;
+  }
+
+  if (isRequired === true) _input.required = true;
+
+  function makeResponseStandard(response) {
+    var newResponseList = [];
+    response.forEach(function (row) {
+      var newResponseObject = {};
+      newResponseObject.key = (row.Key || row.key || row.KEY || row.Id || row.id || row.ID).toString();
+      newResponseObject.value = (row.Value || row.value || row.VALUE || row.Title || row.title || row.TITLE).toString();
+
+      newResponseList.push(newResponseObject);
+    });
+
+    return newResponseList;
+  }
+
+  function sendRequest() {
+    var request = new XMLHttpRequest();
+    request.open('GET', apiUrl, true);
+
+    request.onload = function () {
+      if (request.status >= 200 && request.status < 400) {
+        // Success!
+        var response = JSON.parse(request.responseText);
+        response = makeResponseStandard(response);
+        callback(response);
+      } else {
+        // We reached our target server, but it returned an error
+      }
+    };
+
+    request.onerror = function () {
+      // There was a connection error of some sort
+    };
+
+    request.send();
+  }
+
+  function callback(options) {
+    options.forEach(function (option) {
+      var _option = document.createElement('option');
+      _option.value = option.key;
+      _option.text = option.value;
+
+      _input.appendChild(_option);
+    });
+
+    var _hiddenValueInput = document.getElementById(id + '__hidden_value_input');
+    if (_hiddenValueInput) _hiddenValueInput.value = '';
+
+    _input.value = value;
+  }
+
+  sendRequest();
+};
+
+RegateForeignKey._markup = '\n  <select\n    id=\'{id}__input\'\n    class=\'form-control\'\n  ></select>\n';
+
+RegateForeignKey.markup = function (id) {
+  return RegateForeignKey.getMarkup().replace(/{id}/g, id);
+};
+
+RegateForeignKey.setMarkup = function (markup) {
+  return RegateForeignKey._markup = markup;
+};
+
+RegateForeignKey.getMarkup = function () {
+  return RegateForeignKey._markup;
+};
+
+exports.default = RegateForeignKey;
 
 /***/ })
 /******/ ]);
