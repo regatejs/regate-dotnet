@@ -49,11 +49,6 @@ namespace Regate
 {
     public static partial class ${component}
     {
-        public static string Init()
-        {
-            return $"<script>{_GetJs()}</script>";
-        }
-
         private static string _GetJs()
         {
             return @"${code}";
