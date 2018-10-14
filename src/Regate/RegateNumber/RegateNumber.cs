@@ -22,7 +22,7 @@ namespace Regate
         public static string Build(string name, decimal? value) =>
             _Build(new Props(name, value));
 
-        /*
+        
         public static string Build(
               string name
             , decimal? value = null
@@ -32,7 +32,8 @@ namespace Regate
             {
                 IsRequired = isRequired,
             });
-
+        
+        
         public static string Build(
               string name
             , int? value = null
@@ -52,8 +53,13 @@ namespace Regate
             {
                 IsRequired = isRequired,
             });
-        */
 
+
+        public static object Build(string name, bool isRequired = false) =>
+            _Build(new Props(name)
+            {
+                IsRequired = isRequired,
+            });
     }
 
 }
