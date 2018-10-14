@@ -11,6 +11,21 @@ namespace Regate
         public static string Build(string apiUrl, string name, string value) =>
             _Build(new Props(apiUrl, name, value));
 
+        public static string Build(
+              string apiUrl
+            , string name
+            , string value = null
+            , bool isRequired = false
+        ) =>
+            _Build(value == null
+                ? new Props(apiUrl, name)
+                {
+                    IsRequired = isRequired,
+                }
+                : new Props(apiUrl, name, value)
+                {
+                    IsRequired = isRequired,
+                });
     }
 
 }
