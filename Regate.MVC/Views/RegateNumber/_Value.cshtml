@@ -6,7 +6,10 @@
             <form method="get">
                 <div class="row">
                     <div class="col-lg-10 col-md-9">
-                        @Html.Raw(RegateNumber.Build("Title", 10))
+                        @{
+                            int value = 10;
+                        }
+                        @Html.Raw(RegateNumber.Build("Title", value))
                     </div>
                     <div class="col-lg-2 col-md-3">
                         <button type="submit" class="btn btn-block btn-primary">Submit</button>

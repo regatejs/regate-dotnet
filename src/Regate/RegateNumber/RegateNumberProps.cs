@@ -27,29 +27,9 @@ namespace Regate
                 if (value != null) Value = (decimal) value;
             }
 
-            public Props(string name, bool isRequired) : this(name)
-            {
-                IsRequired = isRequired;
-            }
-
-            public Props(string name, decimal? value, bool isRequired) : this(name, value)
-            {
-                IsRequired = isRequired;
-            }
-
-            public Props(string name, float? value, bool isRequired) : this(name, value)
-            {
-                IsRequired = isRequired;
-            }
-
-            public Props(string name, int? value, bool isRequired) : this(name, value)
-            {
-                IsRequired = isRequired;
-            }
-
             public string Name { get; }
             public decimal? Value { get; }
-            public bool IsRequired { get; }
+            public bool IsRequired { get; set; }
         }
     }
 
