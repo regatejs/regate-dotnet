@@ -9,10 +9,17 @@ namespace Regate
     {
         private static string _Build(Props props)
         {
-            var uniqueId = $"RegateText__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
+            var uniqueId = $"RegateTextMulti__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
 
-            var value = string.Join("\n", props.Value);
-            value = JavaScriptEncoder.Default.Encode(value);
+            var value = "";
+
+            if (props.Value != null)
+            {
+                value = string.Join("\n", props.Value);
+                value = JavaScriptEncoder.Default.Encode(value);
+            }
+
+            
 
 
             return $@"

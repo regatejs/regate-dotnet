@@ -10,11 +10,14 @@ namespace Regate
             _Build(new Props(name));
 
         public static string Build(string name, List<string> value) =>
-            _Build(new Props(name, value));
+            _Build(value == null
+                ? new Props(name)
+                : new Props(name, value)
+            );
 
         public static string Build(
               string name
-            , List<string> value
+            , List<string> value = null
             , bool isRequired = false
         ) =>
             _Build(new Props(name, value)
