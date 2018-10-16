@@ -1,0 +1,11 @@
+﻿@using Regate
+
+@{
+    ViewData["Title"] = "RegateTextMulti";
+}
+
+@Html.Raw(RegateTextMulti.Init())
+
+@await Html.PartialAsync("_Basic")
+@*@await Html.PartialAsync("_Value")*@
+@*@await Html.PartialAsync("_IsRequired")*@

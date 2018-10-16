@@ -89,6 +89,18 @@
     <Content Update="Views\RegateDropdown\_Basic.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\RegateTextMulti\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RegateTextMulti\_Basic.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RegateTextMulti\_IsRequired.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RegateTextMulti\_Value.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\RegateTextarea\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

@@ -20,7 +20,7 @@ namespace Regate
             }
 
             public string Name { get; }
-            public List<string> Value { get; }
+            public List<string> Value { get; } = new List<string>();
             public bool IsRequired { get; set; }
         }
     }
