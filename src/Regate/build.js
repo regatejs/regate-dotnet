@@ -14,6 +14,7 @@ const components = [
   'RegatePersianDateTimePicker',
   'RegateSwitch',
   'RegateForeignKey',
+  'RegateTextMulti',
 ]
 
 components.forEach(component => {

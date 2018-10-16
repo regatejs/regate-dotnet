@@ -83,7 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.RegateForeignKey = exports.RegateSwitch = exports.RegatePersianDateTimePicker = exports.RegateKeyword = exports.RegateNumber = exports.RegateDropdown = exports.RegateCkeditor = exports.RegateContentEditable = exports.RegateTextarea = exports.RegateImage = exports.RegateFile = exports.RegateText = undefined;
+exports.RegateTextMulti = exports.RegateForeignKey = exports.RegateSwitch = exports.RegatePersianDateTimePicker = exports.RegateKeyword = exports.RegateNumber = exports.RegateDropdown = exports.RegateCkeditor = exports.RegateContentEditable = exports.RegateTextarea = exports.RegateImage = exports.RegateFile = exports.RegateText = undefined;
 
 var _RegateText = __webpack_require__(1);
 
@@ -133,6 +133,10 @@ var _RegateForeignKey = __webpack_require__(12);
 
 var _RegateForeignKey2 = _interopRequireDefault(_RegateForeignKey);
 
+var _RegateTextMulti = __webpack_require__(13);
+
+var _RegateTextMulti2 = _interopRequireDefault(_RegateTextMulti);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.RegateText = _RegateText2.default;
@@ -147,6 +151,7 @@ exports.RegateKeyword = _RegateKeyword2.default;
 exports.RegatePersianDateTimePicker = _RegatePersianDateTimePicker2.default;
 exports.RegateSwitch = _RegateSwitch2.default;
 exports.RegateForeignKey = _RegateForeignKey2.default;
+exports.RegateTextMulti = _RegateTextMulti2.default;
 
 /***/ }),
 /* 1 */
@@ -1166,6 +1171,101 @@ RegateForeignKey.getMarkup = function () {
 };
 
 exports.default = RegateForeignKey;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var RegateTextMulti = {};
+
+RegateTextMulti.init = function (_ref) {
+  var id = _ref.id,
+      name = _ref.name,
+      _ref$value = _ref.value,
+      value = _ref$value === undefined ? '' : _ref$value,
+      _ref$isRequired = _ref.isRequired,
+      isRequired = _ref$isRequired === undefined ? false : _ref$isRequired;
+
+  function insertBefore(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode);
+  }
+
+  function removeOldOnes() {
+    var list = document.querySelectorAll('[data-group-id=\'' + id + '\']');
+
+    for (var i = list.length - 1; 0 <= i; i--) {
+      if (list[i] && list[i].parentElement) {
+        list[i].parentElement.removeChild(list[i]);
+      }
+    }
+  }
+
+  function getLines() {
+    return _input.value.split('\n').map(function (line) {
+      return line.trim();
+    }).filter(function (line) {
+      return line.length > 0;
+    });
+  }
+
+  function createNewOnes(lines) {
+    for (var j = 0; j < lines.length; j++) {
+      var input = document.createElement('input');
+
+      input.setAttribute('type', 'hidden');
+      input.setAttribute('value', lines[j]);
+      input.setAttribute('name', name);
+      input.setAttribute('data-group-id', id);
+
+      insertBefore(input, _input);
+    }
+  }
+
+  if (id === undefined) throw new Error('id is required');
+
+  var _input = document.getElementById(id + '__input');
+
+  if (_input === undefined) throw new Error('id is invalid');
+
+  if (isRequired === true) _input.required = true;
+
+  _input.value = value;
+
+  _input.style.height = 200 + 'px';
+
+  function handleInput() {
+    removeOldOnes();
+
+    var lines = getLines();
+    createNewOnes(lines);
+  }
+
+  _input.oninput = handleInput;
+
+  handleInput();
+};
+
+RegateTextMulti._markup = '\n  <textarea\n    id=\'{id}__input\'\n    class=\'form-control\'\n    style=\'resize: none;\'\n  ></textarea>\n';
+
+RegateTextMulti.markup = function (id) {
+  return RegateTextMulti.getMarkup().replace(/{id}/g, id);
+};
+
+RegateTextMulti.setMarkup = function (markup) {
+  return RegateTextMulti._markup = markup;
+};
+
+RegateTextMulti.getMarkup = function () {
+  return RegateTextMulti._markup;
+};
+
+exports.default = RegateTextMulti;
 
 /***/ })
 /******/ ]);
