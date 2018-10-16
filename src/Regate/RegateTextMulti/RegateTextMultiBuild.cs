@@ -12,6 +12,7 @@ namespace Regate
             var uniqueId = $"RegateText__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
 
             var value = string.Join("\n", props.Value);
+            value = JavaScriptEncoder.Default.Encode(value);
 
 
             return $@"

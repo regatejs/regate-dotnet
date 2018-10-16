@@ -6,7 +6,7 @@
             <form method="get">
                 <div class="row">
                     <div class="col-lg-10 col-md-9">
-                        @Html.Raw(RegateTextarea.Build("Title", "Hello World"))
+                        @Html.Raw(RegateTextMulti.Build("Title", new List<string>{ "Apple", "Google", "GitHub" }))
                     </div>
                     <div class="col-lg-2 col-md-3">
                         <button type="submit" class="btn btn-block btn-primary">Submit</button>
@@ -15,7 +15,7 @@
             </form>
         </div>
 
-        <div class="regate-code"><pre><code class="javascript">&#64;Html.Raw(RegateTextarea.Build("Title", "Hello World"))</code></pre></div>
+        <div class="regate-code"><pre><code class="javascript">&#64;Html.Raw(RegateTextMulti.Build("Names", , new List&lt;string&gt;{ "Apple", "Google", "GitHub" }))</code></pre></div>
         <div class="regate-serialize bg-gray-dark text-gray-lighter"></div>
     </div>
 </div>
