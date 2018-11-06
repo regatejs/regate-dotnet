@@ -14,6 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\InteractiveBoolean\_False.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\InteractiveBoolean\_True.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\RegateContentEditable\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
