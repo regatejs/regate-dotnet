@@ -24,6 +24,9 @@ namespace Regate
 var smile = function() {}; smile({
   value: true
 });
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var InteractiveBoolean = {};
 
 InteractiveBoolean.init = function (_ref) {
@@ -65,7 +68,7 @@ InteractiveBoolean.init = function (_ref) {
   }
 
   function sendAjaxRequest(status) {
-    var data = JSON.stringify({ status: status });
+    var data = JSON.stringify(_defineProperty({}, name, status));
     var request = new XMLHttpRequest();
     request.open('POST', apiUrl, true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');

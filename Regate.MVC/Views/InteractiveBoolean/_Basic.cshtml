@@ -8,7 +8,7 @@
             <form method="get">
                 <div class="row">
                     <div class="col-lg-10 col-md-9">
-                        @Html.Raw(InteractiveBoolean.Build("https://jsonplaceholder.typicode.com/posts", "Status"))
+                        @Html.Raw(InteractiveBoolean.Build("/InteractiveBoolean/ChangeStatus/?id=1", "Status"))
                     </div>
                     <div class="col-lg-2 col-md-3">
                         <button type="submit" class="btn btn-block btn-primary">Submit</button>
