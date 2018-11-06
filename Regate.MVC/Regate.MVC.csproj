@@ -23,6 +23,12 @@
     <Content Update="Views\RegateContentEditable\_Value.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\InteractiveBoolean\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\InteractiveBoolean\_Basic.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\RegateForeignKey\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
