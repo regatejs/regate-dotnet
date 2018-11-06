@@ -1,0 +1,23 @@
+﻿@using Regate.MVC.SSOT
+
+<div class="content">
+    <h2>Nullable</h2>
+
+    <div class="regate-example-container">
+        <div class="regate-example">
+            <form method="get">
+                <div class="row">
+                    <div class="col-lg-10 col-md-9">
+                        @Html.Raw(InteractiveBoolean.Build("/InteractiveBoolean/ChangeStatus/?id=1", "Status", isNullable: true))
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <button type="submit" class="btn btn-block btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    
+        <div class="regate-code"><pre><code class="javascript">&#64;Html.Raw(InteractiveBoolean.Build("/InteractiveBoolean/ChangeStatus/?id=1", "Status", isNullable: true))</code></pre></div>
+        <div class="regate-serialize bg-gray-dark text-gray-lighter"></div>
+    </div>
+</div>

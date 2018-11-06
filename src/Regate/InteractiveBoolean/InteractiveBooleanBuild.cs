@@ -19,6 +19,7 @@ namespace Regate
                         name: '{props.Name}',
                         apiUrl: '{props.ApiUrl}',
                         value: {(props.Value.HasValue ? props.Value.ToString().ToLower() : "null")},
+                        isNullable: {props.IsNullable.ToString().ToLower()},
                     }});
                 </script>
             ";
