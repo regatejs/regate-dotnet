@@ -83,7 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.RegateTextMulti = exports.RegateForeignKey = exports.RegateSwitch = exports.RegatePersianDateTimePicker = exports.RegateKeyword = exports.RegateNumber = exports.RegateDropdown = exports.RegateCkeditor = exports.RegateContentEditable = exports.RegateTextarea = exports.RegateImage = exports.RegateFile = exports.RegateText = undefined;
+exports.InteractiveBoolean = exports.RegateTextMulti = exports.RegateForeignKey = exports.RegateSwitch = exports.RegatePersianDateTimePicker = exports.RegateKeyword = exports.RegateNumber = exports.RegateDropdown = exports.RegateCkeditor = exports.RegateContentEditable = exports.RegateTextarea = exports.RegateImage = exports.RegateFile = exports.RegateText = undefined;
 
 var _RegateText = __webpack_require__(1);
 
@@ -137,6 +137,10 @@ var _RegateTextMulti = __webpack_require__(13);
 
 var _RegateTextMulti2 = _interopRequireDefault(_RegateTextMulti);
 
+var _InteractiveBoolean = __webpack_require__(14);
+
+var _InteractiveBoolean2 = _interopRequireDefault(_InteractiveBoolean);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.RegateText = _RegateText2.default;
@@ -152,6 +156,7 @@ exports.RegatePersianDateTimePicker = _RegatePersianDateTimePicker2.default;
 exports.RegateSwitch = _RegateSwitch2.default;
 exports.RegateForeignKey = _RegateForeignKey2.default;
 exports.RegateTextMulti = _RegateTextMulti2.default;
+exports.InteractiveBoolean = _InteractiveBoolean2.default;
 
 /***/ }),
 /* 1 */
@@ -1266,6 +1271,106 @@ RegateTextMulti.getMarkup = function () {
 };
 
 exports.default = RegateTextMulti;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var InteractiveBoolean = {};
+
+InteractiveBoolean.init = function (_ref) {
+  var id = _ref.id,
+      name = _ref.name,
+      _ref$apiUrl = _ref.apiUrl,
+      apiUrl = _ref$apiUrl === undefined ? '' : _ref$apiUrl,
+      _ref$value = _ref.value,
+      value = _ref$value === undefined ? null : _ref$value,
+      _ref$isNullable = _ref.isNullable,
+      isNullable = _ref$isNullable === undefined ? false : _ref$isNullable;
+
+
+  if (id === undefined) throw new Error('id is required');
+
+  var _null = document.getElementById(id + '__null');
+  var _true = document.getElementById(id + '__true');
+  var _false = document.getElementById(id + '__false');
+  var _loading = document.getElementById(id + '__loading');
+
+  showStatusIndicator(value);
+
+  function showLoading() {
+    _true.style.display = 'none';
+    _false.style.display = 'none';
+    _null.style.display = 'none';
+    _loading.style.display = '';
+  }
+
+  function showStatusIndicator(status) {
+    _loading.style.display = 'none';
+    _true.style.display = 'none';
+    _false.style.display = 'none';
+    _null.style.display = 'none';
+
+    if (status === true) _true.style.display = '';else if (status === false) _false.style.display = '';else {
+      if (isNullable) _null.style.display = '';else _false.style.display = '';
+    }
+  }
+
+  function sendAjaxRequest(status) {
+    var data = JSON.stringify({ status: status });
+    var request = new XMLHttpRequest();
+    request.open('POST', apiUrl, true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.send(data);
+
+    request.onload = function () {
+      if (request.status >= 200 && request.status < 400) {
+        var response = JSON.parse(request.response);
+        showStatusIndicator(response.status);
+      } else {
+        // We reached our target server, but it returned an error
+        alert('something went wrong');
+      }
+    };
+  }
+
+  function handle(newStatus) {
+    showLoading();
+    sendAjaxRequest(newStatus);
+  }
+
+  _null.onclick = function (e) {
+    return handle(true);
+  };
+  _true.onclick = function (e) {
+    return handle(false);
+  };
+  _false.onclick = function (e) {
+    return handle(isNullable ? null : true);
+  };
+};
+
+InteractiveBoolean._markup = '\n  <i id=\'{id}__true\'\n     class=\'fa fa-circle text-success\'\n     style=\'display: none; cursor: pointer;\'></i>\n\n  <i id=\'{id}__false\'\n     class=\'fa fa-circle text-danger\'\n     style=\'display: none; cursor: pointer;\'></i>\n\n  <i id=\'{id}__null\'\n     class=\'fa fa-circle text-warning\'\n     style=\'display: none; cursor: pointer;\'></i>\n\n  <i id=\'{id}__loading\'\n     class=\'fa fa-spin fa-spinner text-mute\'\n     style=\'display: none;\'></i>\n';
+
+InteractiveBoolean.markup = function (id) {
+  return InteractiveBoolean.getMarkup().replace(/{id}/g, id);
+};
+
+InteractiveBoolean.setMarkup = function (markup) {
+  return InteractiveBoolean._markup = markup;
+};
+
+InteractiveBoolean.getMarkup = function () {
+  return InteractiveBoolean._markup;
+};
+
+exports.default = InteractiveBoolean;
 
 /***/ })
 /******/ ]);

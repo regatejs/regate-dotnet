@@ -15,6 +15,8 @@ const components = [
   'RegateSwitch',
   'RegateForeignKey',
   'RegateTextMulti',
+  
+  'InteractiveBoolean',
 ]
 
 components.forEach(component => {
