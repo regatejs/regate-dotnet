@@ -5,21 +5,12 @@ namespace Regate
 {
     public static partial class InteractiveBoolean
     {
-        public static string Build(string name) =>
-            _Build(new Props(name));
+        public static string Build(string apiUrl, string name) =>
+            _Build(new Props(apiUrl, name));
 
-        public static string Build(string name, string value) =>
-            _Build(new Props(name, value));
+        public static string Build(string apiUrl, string name, bool? value) =>
+            _Build(new Props(apiUrl, name, value));
 
-        public static string Build(
-              string name
-            , string value = null
-            , bool isRequired = false
-        ) =>
-            _Build(new Props(name, value)
-            {
-                IsRequired = isRequired,
-            });
     }
 
 }

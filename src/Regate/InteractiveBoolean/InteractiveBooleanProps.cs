@@ -8,12 +8,13 @@ namespace Regate
         
         private class Props
         {
-            public Props(string name)
+            public Props(string apiUrl, string name)
             {
                 Name = name;
+                ApiUrl = apiUrl;
             }
 
-            public Props(string name, bool? value) : this(name)
+            public Props(string apiUrl, string name, bool? value) : this(apiUrl, name)
             {
                 Value = value;
             }
@@ -21,6 +22,7 @@ namespace Regate
             public string Name { get; }
             public bool? Value { get; }
             public string ApiUrl { get; set; }
+
             public bool IsNullable { get; set; }
         }
     }

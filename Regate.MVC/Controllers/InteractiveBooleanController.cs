@@ -8,5 +8,11 @@ namespace Regate.MVC.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult ChangeStatus(int id, bool? status)
+        {
+            return Json(new { id, status });
+        }
     }
 }
