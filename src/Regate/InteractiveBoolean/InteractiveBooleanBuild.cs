@@ -8,21 +8,16 @@ namespace Regate
     {
         private static string _Build(Props props)
         {
-            var uniqueId = $"RegateText__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
-
-            var value = string.IsNullOrWhiteSpace(props.Value) ? "" : props.Value;
-            value = JavaScriptEncoder.Default.Encode(value);
-
+            var uniqueId = $"InteractiveBoolean__{props.Name}__{Guid.NewGuid().ToString().Replace("-", "")}";
 
             return $@"
-                <script>document.write(Regate.RegateText.markup('{uniqueId}'))</script>
+                <script>document.write(Regate.InteractiveBoolean.markup('{uniqueId}'))</script>
 
                 <script>
-                    Regate.RegateText.init({{
+                    Regate.InteractiveBoolean.init({{
                         id: '{uniqueId}',
                         name: '{props.Name}',
-                        value: '{value}',
-                        isRequired: {props.IsRequired.ToString().ToLower()},
+                        value: '{(props.Value.HasValue ? props.Value.ToString().ToLower() : "null")}',
                     }});
                 </script>
             ";
