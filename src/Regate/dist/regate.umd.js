@@ -83,7 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.InteractiveBoolean = exports.RegateTextMulti = exports.RegateForeignKey = exports.RegateSwitch = exports.RegatePersianDateTimePicker = exports.RegateKeyword = exports.RegateNumber = exports.RegateDropdown = exports.RegateCkeditor = exports.RegateContentEditable = exports.RegateTextarea = exports.RegateImage = exports.RegateFile = exports.RegateText = undefined;
+exports.InteractiveBoolean = exports.RegateTimePicker = exports.RegateTextMulti = exports.RegateForeignKey = exports.RegateSwitch = exports.RegatePersianDateTimePicker = exports.RegateKeyword = exports.RegateNumber = exports.RegateDropdown = exports.RegateCkeditor = exports.RegateContentEditable = exports.RegateTextarea = exports.RegateImage = exports.RegateFile = exports.RegateText = undefined;
 
 var _RegateText = __webpack_require__(1);
 
@@ -137,7 +137,11 @@ var _RegateTextMulti = __webpack_require__(13);
 
 var _RegateTextMulti2 = _interopRequireDefault(_RegateTextMulti);
 
-var _InteractiveBoolean = __webpack_require__(14);
+var _RegateTimePicker = __webpack_require__(14);
+
+var _RegateTimePicker2 = _interopRequireDefault(_RegateTimePicker);
+
+var _InteractiveBoolean = __webpack_require__(15);
 
 var _InteractiveBoolean2 = _interopRequireDefault(_InteractiveBoolean);
 
@@ -156,6 +160,7 @@ exports.RegatePersianDateTimePicker = _RegatePersianDateTimePicker2.default;
 exports.RegateSwitch = _RegateSwitch2.default;
 exports.RegateForeignKey = _RegateForeignKey2.default;
 exports.RegateTextMulti = _RegateTextMulti2.default;
+exports.RegateTimePicker = _RegateTimePicker2.default;
 exports.InteractiveBoolean = _InteractiveBoolean2.default;
 
 /***/ }),
@@ -215,6 +220,11 @@ RegateText.init = function (_ref) {
       onChange({ value: value, isValid: isValid });
     };
   }
+};
+
+RegateText.update = function (id, value) {
+  var _input = document.getElementById(id + '__input');
+  _input.value = value;
 };
 
 RegateText._markup = '\n  <input\n    id=\'{id}__input\'\n    type=\'text\'\n    class=\'form-control\'\n  />\n';
@@ -1282,6 +1292,70 @@ exports.default = RegateTextMulti;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var RegateTimePicker = {};
+
+RegateTimePicker.init = function (_ref) {
+  var id = _ref.id,
+      name = _ref.name,
+      _ref$value = _ref.value,
+      value = _ref$value === undefined ? '' : _ref$value,
+      _ref$isRequired = _ref.isRequired,
+      isRequired = _ref$isRequired === undefined ? false : _ref$isRequired;
+
+
+  if (id === undefined) throw new Error('id is required');
+
+  var _input = document.getElementById(id + '__input');
+
+  if (_input === undefined) throw new Error('id is invalid');
+
+  _input.name = name;
+
+  if (isRequired === true) _input.required = true;
+
+  if (value !== undefined) _input.value = value;
+
+  flatpickr(_input, {
+    dateFormat: 'H:i:S',
+    enableSeconds: true,
+    enableTime: true,
+    allowInput: true,
+    noCalendar: true,
+    time_24hr: true
+  });
+};
+
+RegateTimePicker.update = function (id, value) {
+  var _input = document.getElementById(id + '__input');
+  _input.value = value;
+};
+
+RegateTimePicker._markup = '\n  <input\n    id=\'{id}__input\'\n    type=\'text\'\n    class=\'form-control\'\n  />\n';
+
+RegateTimePicker.markup = function (id) {
+  return RegateTimePicker.getMarkup().replace(/{id}/g, id);
+};
+
+RegateTimePicker.setMarkup = function (markup) {
+  return RegateTimePicker._markup = markup;
+};
+
+RegateTimePicker.getMarkup = function () {
+  return RegateTimePicker._markup;
+};
+
+exports.default = RegateTimePicker;
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -1318,13 +1392,25 @@ InteractiveBoolean.init = function (_ref) {
     _loading.style.display = '';
   }
 
+  function normalizeStatus(status) {
+    if (status === true) return true;
+
+    if (status === 'true') return true;
+
+    if (status === false) return false;
+
+    if (status === 'false') return false;
+
+    return status;
+  }
+
   function showStatusIndicator(status) {
     _loading.style.display = 'none';
     _true.style.display = 'none';
     _false.style.display = 'none';
     _null.style.display = 'none';
 
-    if (status === true) _true.style.display = '';else if (status === false) _false.style.display = '';else {
+    if (normalizeStatus(status) === true) _true.style.display = '';else if (normalizeStatus(status) === false) _false.style.display = '';else {
       if (isNullable) _null.style.display = '';else _false.style.display = '';
     }
   }
