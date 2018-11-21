@@ -15,6 +15,7 @@ const components = [
   'RegateSwitch',
   'RegateForeignKey',
   'RegateTextMulti',
+  'RegateTimePicker',
   
   'InteractiveBoolean',
 ]
