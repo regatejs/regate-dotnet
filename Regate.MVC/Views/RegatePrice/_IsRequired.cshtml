@@ -6,10 +6,7 @@
             <form method="get">
                 <div class="row">
                     <div class="col-lg-10 col-md-9">
-                        @{
-                            int? value = 123456;
-                        }
-                        @Html.Raw(RegatePrice.Build("Price2", isRequired: true))
+                        @Html.Raw(RegatePrice.Build("Price", isRequired: true))
                     </div>
                     <div class="col-lg-2 col-md-3">
                         <button type="submit" class="btn btn-block btn-primary">Submit</button>

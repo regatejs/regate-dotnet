@@ -51,6 +51,36 @@ namespace Regate
             {
                 IsRequired = isRequired,
             });
+
+        public static string Build(
+              string name
+            , double? value = null
+            , bool isRequired = false
+        ) =>
+            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value))
+            {
+                IsRequired = isRequired,
+            });
+
+        public static string Build(
+              string name
+            , float? value = null
+            , bool isRequired = false
+        ) =>
+            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value))
+            {
+                IsRequired = isRequired,
+            });
+
+        public static string Build(
+              string name
+            , decimal? value = null
+            , bool isRequired = false
+        ) =>
+            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value))
+            {
+                IsRequired = isRequired,
+            });
     }
 
 }
