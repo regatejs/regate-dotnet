@@ -11,6 +11,9 @@ namespace Regate
         public static string Build(string name, string value) =>
             _Build(new Props(name, value));
 
+        public static string Build(string name, int value) =>
+            _Build(new Props(name, value.ToString()));
+
         public static string Build(
               string name
             , string value = null
