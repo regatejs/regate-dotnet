@@ -9,6 +9,11 @@ namespace Regate
         {
             return Convert.ToInt32(value).ToString();
         }
+
+        public static string ConvertToString(decimal value)
+        {
+            return Convert.ToInt32(value).ToString();
+        }
     }
 
 }

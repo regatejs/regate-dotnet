@@ -23,5 +23,27 @@ namespace Regate.Tests
 
             Assert.Equal("12345678", output);
         }
+
+
+        [Fact]
+        public void ConvertToString_Decimal1()
+        {
+            decimal input = 123456;
+            string output = RegatePriceHelpers.ConvertToString(input);
+            var test = output == "123456";
+
+            Assert.True(test);
+        }
+
+
+        [Fact]
+        public void ConvertToString_Decimal2()
+        {
+            decimal input = 1234567890;
+            string output = RegatePriceHelpers.ConvertToString(input);
+            var test = output == "1234567890";
+
+            Assert.True(test);
+        }
     }
 }

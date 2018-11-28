@@ -15,7 +15,10 @@ namespace Regate
             _Build(new Props(name, value.ToString()));
 
         public static string Build(string name, float value) =>
-            _Build(new Props(name, value.ToString()));
+            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value)));
+
+        public static string Build(string name, decimal value) =>
+            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value)));
 
         public static string Build(
               string name
