@@ -14,6 +14,11 @@ namespace Regate
         {
             return Convert.ToInt32(value).ToString();
         }
+
+        public static string ConvertToString(double value)
+        {
+            return Convert.ToInt32(value).ToString();
+        }
     }
 
 }
