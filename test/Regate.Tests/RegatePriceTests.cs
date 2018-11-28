@@ -61,5 +61,24 @@ namespace Regate.Tests
 
             Assert.Equal("1234567890", output);
         }
+
+        [Fact]
+        public void ConvertToString_Integer1()
+        {
+            int input = 123456;
+            string output = RegatePriceHelpers.ConvertToString(input);
+
+            Assert.Equal("123456", output);
+        }
+
+
+        [Fact]
+        public void ConvertToString_Integer2()
+        {
+            int input = 1234567890;
+            string output = RegatePriceHelpers.ConvertToString(input);
+
+            Assert.Equal("1234567890", output);
+        }
     }
 }

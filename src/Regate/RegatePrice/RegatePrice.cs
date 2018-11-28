@@ -11,13 +11,16 @@ namespace Regate
         public static string Build(string name, string value) =>
             _Build(new Props(name, value));
 
-        public static string Build(string name, int value) =>
-            _Build(new Props(name, value.ToString()));
-
-        public static string Build(string name, float value) =>
+        public static string Build(string name, int? value) =>
             _Build(new Props(name, RegatePriceHelpers.ConvertToString(value)));
 
-        public static string Build(string name, decimal value) =>
+        public static string Build(string name, float? value) =>
+            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value)));
+
+        public static string Build(string name, decimal? value) =>
+            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value)));
+
+        public static string Build(string name, double? value) =>
             _Build(new Props(name, RegatePriceHelpers.ConvertToString(value)));
 
         public static string Build(
