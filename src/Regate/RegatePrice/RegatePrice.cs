@@ -12,16 +12,16 @@ namespace Regate
             _Build(new Props(name, value));
 
         public static string Build(string name, int? value) =>
-            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value)));
+            _Build(new Props(name, value));
 
         public static string Build(string name, float? value) =>
-            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value)));
+            _Build(new Props(name, value));
 
         public static string Build(string name, decimal? value) =>
-            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value)));
+            _Build(new Props(name, value));
 
         public static string Build(string name, double? value) =>
-            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value)));
+            _Build(new Props(name, value));
 
         public static string Build(
               string name
@@ -47,7 +47,7 @@ namespace Regate
             , int? value = null
             , bool isRequired = false
         ) =>
-            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value))
+            _Build(new Props(name, value)
             {
                 IsRequired = isRequired,
             });
@@ -57,7 +57,7 @@ namespace Regate
             , double? value = null
             , bool isRequired = false
         ) =>
-            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value))
+            _Build(new Props(name, value)
             {
                 IsRequired = isRequired,
             });
@@ -67,7 +67,7 @@ namespace Regate
             , float? value = null
             , bool isRequired = false
         ) =>
-            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value))
+            _Build(new Props(name, value)
             {
                 IsRequired = isRequired,
             });
@@ -77,7 +77,7 @@ namespace Regate
             , decimal? value = null
             , bool isRequired = false
         ) =>
-            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value))
+            _Build(new Props(name, value)
             {
                 IsRequired = isRequired,
             });

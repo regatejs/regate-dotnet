@@ -18,6 +18,26 @@ namespace Regate
                 Value = value;
             }
 
+            public Props(string name, int? value) : this(name)
+            {
+                Value = RegatePriceHelpers.ConvertToString(value);
+            }
+
+            public Props(string name, float? value) : this(name)
+            {
+                Value = RegatePriceHelpers.ConvertToString(value);
+            }
+
+            public Props(string name, double? value) : this(name)
+            {
+                Value = RegatePriceHelpers.ConvertToString(value);
+            }
+
+            public Props(string name, decimal? value) : this(name)
+            {
+                Value = RegatePriceHelpers.ConvertToString(value);
+            }
+
             public string Name { get; }
             public string Value { get; }
             public bool IsRequired { get; set; }
