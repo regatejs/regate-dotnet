@@ -6,7 +6,10 @@
             <form method="get">
                 <div class="row">
                     <div class="col-lg-10 col-md-9">
-                        @Html.Raw(RegatePrice.Build("Price", 1234567890))
+                        @{
+                            float value = 1234567890f;
+                        }
+                        @Html.Raw(RegatePrice.Build("Price", value))
                     </div>
                     <div class="col-lg-2 col-md-3">
                         <button type="submit" class="btn btn-block btn-primary">Submit</button>

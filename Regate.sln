@@ -7,7 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7BAE9762-F63
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Regate", "src\Regate\Regate.csproj", "{769E21D1-0413-49AF-9F04-3332AE7B9770}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regate.MVC", "Regate.MVC\Regate.MVC.csproj", "{1C615C69-40B3-4D44-9475-35DF2C0D1CEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Regate.MVC", "Regate.MVC\Regate.MVC.csproj", "{1C615C69-40B3-4D44-9475-35DF2C0D1CEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{AF4B0FFF-17E0-45F6-8A36-B6CBAD1EB577}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Regate.Tests", "test\Regate.Tests\Regate.Tests.csproj", "{B35E7952-2C45-4533-8F26-FD77220D43C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +27,17 @@ Global
 		{1C615C69-40B3-4D44-9475-35DF2C0D1CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C615C69-40B3-4D44-9475-35DF2C0D1CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C615C69-40B3-4D44-9475-35DF2C0D1CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B35E7952-2C45-4533-8F26-FD77220D43C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B35E7952-2C45-4533-8F26-FD77220D43C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B35E7952-2C45-4533-8F26-FD77220D43C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B35E7952-2C45-4533-8F26-FD77220D43C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{769E21D1-0413-49AF-9F04-3332AE7B9770} = {7BAE9762-F638-44E7-9466-7E583674FFBC}
+		{B35E7952-2C45-4533-8F26-FD77220D43C6} = {AF4B0FFF-17E0-45F6-8A36-B6CBAD1EB577}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A122C80A-3CB7-4675-8A2E-7AA068CA3308}
