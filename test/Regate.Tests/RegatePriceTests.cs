@@ -6,11 +6,11 @@ namespace Regate.Tests
     public class RegatePriceTests
     {
         [Fact]
-        public void ValidInput()
+        public void ConvertToString_Float()
         {
-            var input = 124;
-            var output = input.ToString();
-            var test = output == "124";
+            float input = 123456;
+            string output = RegatePriceHelpers.ConvertToString(input);
+            var test = output == "123456";
 
             Assert.True(test);
         }
