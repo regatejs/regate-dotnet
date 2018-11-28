@@ -10,9 +10,8 @@ namespace Regate.Tests
         {
             float input = 123456;
             string output = RegatePriceHelpers.ConvertToString(input);
-            var test = output == "123456";
 
-            Assert.True(test);
+            Assert.Equal("123456", output);
         }
 
         [Fact]
@@ -30,9 +29,8 @@ namespace Regate.Tests
         {
             decimal input = 123456;
             string output = RegatePriceHelpers.ConvertToString(input);
-            var test = output == "123456";
 
-            Assert.True(test);
+            Assert.Equal("123456", output);
         }
 
 
@@ -41,9 +39,8 @@ namespace Regate.Tests
         {
             decimal input = 1234567890;
             string output = RegatePriceHelpers.ConvertToString(input);
-            var test = output == "1234567890";
 
-            Assert.True(test);
+            Assert.Equal("1234567890", output);
         }
     }
 }
