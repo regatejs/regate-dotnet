@@ -16,6 +16,7 @@ const components = [
   'RegateForeignKey',
   'RegateTextMulti',
   'RegateTimePicker',
+  'RegatePrice',
   
   'InteractiveBoolean',
 ]
