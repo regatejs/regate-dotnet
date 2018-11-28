@@ -15,7 +15,7 @@ namespace Regate
                 <script>document.write(Regate.RegatePrice.markup('{uniqueId}'))</script>
 
                 <script>
-                    Regate.RegateTimePicker.init({{
+                    Regate.RegatePrice.init({{
                         id: '{uniqueId}',
                         name: '{props.Name}',
                         value: '{props.Value}',
