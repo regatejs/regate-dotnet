@@ -25,10 +25,29 @@ namespace Regate
 
         public static string Build(
               string name
+            , bool isRequired = false
+        ) =>
+            _Build(new Props(name)
+            {
+                IsRequired = isRequired,
+            });
+
+        public static string Build(
+              string name
             , string value = null
             , bool isRequired = false
         ) =>
             _Build(new Props(name, value)
+            {
+                IsRequired = isRequired,
+            });
+
+        public static string Build(
+              string name
+            , int? value = null
+            , bool isRequired = false
+        ) =>
+            _Build(new Props(name, RegatePriceHelpers.ConvertToString(value))
             {
                 IsRequired = isRequired,
             });
