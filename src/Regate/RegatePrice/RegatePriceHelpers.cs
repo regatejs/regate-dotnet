@@ -7,7 +7,7 @@ namespace Regate
     {
         public static string ConvertToString(float value)
         {
-            return value.ToString();
+            return Convert.ToInt32(value).ToString();
         }
     }
 
