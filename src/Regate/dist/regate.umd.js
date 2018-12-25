@@ -83,7 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.InteractiveBoolean = exports.RegatePrice = exports.RegateTimePicker = exports.RegateTextMulti = exports.RegateForeignKey = exports.RegateSwitch = exports.RegatePersianDateTimePicker = exports.RegateKeyword = exports.RegateNumber = exports.RegateDropdown = exports.RegateCkeditor = exports.RegateContentEditable = exports.RegateTextarea = exports.RegateImage = exports.RegateFile = exports.RegateText = undefined;
+exports.InteractiveBoolean = exports.RegateColor = exports.RegatePrice = exports.RegateTimePicker = exports.RegateTextMulti = exports.RegateForeignKey = exports.RegateSwitch = exports.RegatePersianDateTimePicker = exports.RegateKeyword = exports.RegateNumber = exports.RegateDropdown = exports.RegateCkeditor = exports.RegateContentEditable = exports.RegateTextarea = exports.RegateImage = exports.RegateFile = exports.RegateText = undefined;
 
 var _RegateText = __webpack_require__(1);
 
@@ -145,7 +145,11 @@ var _RegatePrice = __webpack_require__(15);
 
 var _RegatePrice2 = _interopRequireDefault(_RegatePrice);
 
-var _InteractiveBoolean = __webpack_require__(16);
+var _RegateColor = __webpack_require__(16);
+
+var _RegateColor2 = _interopRequireDefault(_RegateColor);
+
+var _InteractiveBoolean = __webpack_require__(17);
 
 var _InteractiveBoolean2 = _interopRequireDefault(_InteractiveBoolean);
 
@@ -166,6 +170,7 @@ exports.RegateForeignKey = _RegateForeignKey2.default;
 exports.RegateTextMulti = _RegateTextMulti2.default;
 exports.RegateTimePicker = _RegateTimePicker2.default;
 exports.RegatePrice = _RegatePrice2.default;
+exports.RegateColor = _RegateColor2.default;
 exports.InteractiveBoolean = _InteractiveBoolean2.default;
 
 /***/ }),
@@ -1510,6 +1515,104 @@ exports.default = RegatePrice;
 
 /***/ }),
 /* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var RegateColor = {};
+
+RegateColor.init = function (_ref) {
+  var id = _ref.id,
+      name = _ref.name,
+      _ref$value = _ref.value,
+      value = _ref$value === undefined ? '' : _ref$value,
+      _ref$isRequired = _ref.isRequired,
+      isRequired = _ref$isRequired === undefined ? false : _ref$isRequired;
+
+
+  if (id === undefined) throw new Error('id is required');
+
+  var _input = document.getElementById(id + '__input');
+
+  if (_input === undefined) throw new Error('id is invalid');
+
+  _input.name = name;
+
+  var options = {
+    el: '#' + id + '__color',
+
+    default: 'transparent',
+
+    components: {
+      preview: true,
+      opacity: false,
+      hue: true,
+
+      interaction: {
+        hex: true,
+        rgba: false,
+        hsva: false,
+        input: true,
+        clear: true,
+        save: true
+      }
+    },
+
+    // User has clicked the save button
+    onSave: function onSave(hsva) {
+      // console.log(hsva)
+      // console.log(instance)
+      try {
+        var hexCode = hsva.toHEX().toString();
+        _input.value = hexCode;
+      } catch (e) {
+        _input.value = '';
+      }
+    }
+  };
+
+  if (isRequired === true) {
+    _input.required = true;
+    _input.value = '#444444';
+    options.default = '#444444';
+    options.components.interaction.clear = false;
+  }
+
+  if (value !== '') {
+    _input.value = value;
+    options.default = value;
+  }
+
+  var pickr = new Pickr(options);
+};
+
+RegateColor.update = function (id, value) {
+  var _input = document.getElementById(id + '__input');
+  _input.value = value;
+};
+
+RegateColor._markup = '\n  <input\n    id=\'{id}__input\'\n    type=\'text\'\n    style=\'position: absolute; pointer-events: none; opacity: 0; width: 0; height: 0;\'\n    z-index=\'-1\'\n    onfocus=\'this.blur()\'\n  />\n\n  <span id=\'{id}__color\'></span>\n';
+
+RegateColor.markup = function (id) {
+  return RegateColor.getMarkup().replace(/{id}/g, id);
+};
+
+RegateColor.setMarkup = function (markup) {
+  return RegateColor._markup = markup;
+};
+
+RegateColor.getMarkup = function () {
+  return RegateColor._markup;
+};
+
+exports.default = RegateColor;
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
