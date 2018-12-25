@@ -17,6 +17,7 @@ const components = [
   'RegateTextMulti',
   'RegateTimePicker',
   'RegatePrice',
+  'RegateColor',
   
   'InteractiveBoolean',
 ]
