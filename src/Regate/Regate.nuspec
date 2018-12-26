@@ -2,10 +2,11 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>0.17.0</version>
+    <version>0.17.1</version>
     <title>Regate</title>
     <authors>Mojtaba Dashtinejad</authors>
     <owners>Mojtaba Dashtinejad</owners>
+    <license type="file">LICENSE.txt</license>
     <licenseUrl>https://github.com/regatejs/regate-dotnet/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/regatejs/regate-dotnet</projectUrl>
     <iconUrl>https://regatejs.github.io/regate-256.png</iconUrl>
