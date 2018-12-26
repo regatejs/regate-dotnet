@@ -5,7 +5,10 @@ namespace Regate
 {
     public static partial class RegateFile
     {
-        
+
+        public const string DefaultUploaderUrl = "/uploader/file/";
+        public const string DefaultRepositoryUrl = "/repository/";
+
         private class Props
         {
             public Props(string name)
@@ -20,8 +23,8 @@ namespace Regate
 
             public string Name { get; }
             public string Value { get; }
-            public string UploaderUrl { get; } = "/uploader/file/";
-            public string RepositoryUrl { get; } = "/repository/";
+            public string UploaderUrl { get; set; } = DefaultUploaderUrl;
+            public string RepositoryUrl { get; set; } = DefaultRepositoryUrl;
             public bool IsRequired { get; set; }
         }
     }

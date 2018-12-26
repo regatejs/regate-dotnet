@@ -15,10 +15,14 @@ namespace Regate
               string name
             , string value = null
             , bool isRequired = false
+            , string uploaderUrl = DefaultUploaderUrl
+            , string repositoryUrl = DefaultRepositoryUrl
         ) =>
             _Build(new Props(name, value)
             {
                 IsRequired = isRequired,
+                UploaderUrl = uploaderUrl,
+                RepositoryUrl = repositoryUrl,
             });
     }
 
