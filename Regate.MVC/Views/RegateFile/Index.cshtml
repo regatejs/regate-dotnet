@@ -1,0 +1,11 @@
+﻿@using Regate
+
+@{
+    ViewData["Title"] = "RegateFile";
+}
+
+@Html.Raw(RegateFile.Init())
+
+@await Html.PartialAsync("_Basic")
+@*@await Html.PartialAsync("_Value")*@
+@*@await Html.PartialAsync("_IsRequired")*@
