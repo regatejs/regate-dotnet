@@ -13,14 +13,13 @@ namespace Regate
                 Name = name;
             }
 
-            public Props(string name, string value) : this(name)
+            public Props(string name, bool? value) : this(name)
             {
                 Value = value;
             }
 
             public string Name { get; }
-            public string Value { get; }
-            public bool IsRequired { get; set; }
+            public bool? Value { get; }
         }
     }
 
