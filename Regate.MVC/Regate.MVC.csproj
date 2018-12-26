@@ -38,6 +38,12 @@
     <Content Update="Views\InteractiveBoolean\_Basic.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\RegateFile\_RepositoryUrl.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RegateFile\_UploaderUrl.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\RegateForeignKey\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
