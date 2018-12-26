@@ -23,6 +23,15 @@
     <Content Update="Views\InteractiveBoolean\_True.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\RegateSwitch\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RegateSwitch\_Basic.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RegateSwitch\_Value.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\RegateContentEditable\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

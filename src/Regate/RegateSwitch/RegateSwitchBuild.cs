@@ -18,7 +18,7 @@ namespace Regate
                     Regate.RegateSwitch.init({{
                         id: '{uniqueId}',
                         name: '{props.Name}',
-                        value: {(props.Value.HasValue ? props.Value.ToString().ToLower() : "false")},
+                        isChecked: {(props.Value.HasValue ? props.Value.ToString().ToLower() : "false")},
                     }});
                 </script>
             ";
