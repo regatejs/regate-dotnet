@@ -1,6 +1,9 @@
-'use strict';
+;(function () {
+    window.Regate = window.Regate || {};
+    window.Regate.version = '0.16.0';
+    
 
-Object.defineProperty(exports, "__esModule", {
+var smile = function() {}; smile({
   value: true
 });
 var RegateSwitch = {};
@@ -45,4 +48,5 @@ RegateSwitch.getMarkup = function () {
   return RegateSwitch._markup;
 };
 
-exports.default = RegateSwitch;
+window.Regate.RegateSwitch = RegateSwitch;
+  }());
