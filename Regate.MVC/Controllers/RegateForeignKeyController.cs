@@ -21,7 +21,7 @@ namespace Regate.MVC.Controllers
                 new IdTitle("5", "Microsoft"),
                 new IdTitle("6", "StackOverflow"),
                 new IdTitle("7", "GitHub"),
-                new IdTitle("8", "Google"),
+                new IdTitle("8", null),
             };
 
             return Json(model);
