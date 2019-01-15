@@ -6,10 +6,10 @@
    nuget pack
    ```
 
-3. It will create a file like `Regate.0.3.0.nupkg` based on your version.
+3. It will create a file like `Regate.*.*.*.nupkg` based on your version.
 4. Run the following command:
    ```
-   nuget push Regate.0.17.4.nupkg -Source https://api.nuget.org/v3/index.json
+   nuget push Regate.0.17.5.nupkg -Source https://api.nuget.org/v3/index.json
    ```
 
 
